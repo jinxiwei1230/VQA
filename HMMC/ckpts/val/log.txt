@@ -1,0 +1,2503 @@
+2024-11-11 15:33:41,147:INFO: Effective parameters:
+2024-11-11 15:33:41,148:INFO:   <<< batch_size: 70
+2024-11-11 15:33:41,148:INFO:   <<< batch_size_val: 70
+2024-11-11 15:33:41,148:INFO:   <<< cache_dir: 
+2024-11-11 15:33:41,148:INFO:   <<< coef_lr: 0.001
+2024-11-11 15:33:41,148:INFO:   <<< cross_model: cross-base
+2024-11-11 15:33:41,148:INFO:   <<< dataset: vatex
+2024-11-11 15:33:41,148:INFO:   <<< do_eval: False
+2024-11-11 15:33:41,148:INFO:   <<< do_params: False
+2024-11-11 15:33:41,149:INFO:   <<< do_pretrain: False
+2024-11-11 15:33:41,149:INFO:   <<< do_train: True
+2024-11-11 15:33:41,149:INFO:   <<< enable_amp: False
+2024-11-11 15:33:41,149:INFO:   <<< epochs: 2
+2024-11-11 15:33:41,149:INFO:   <<< frame_sample: random
+2024-11-11 15:33:41,149:INFO:   <<< frame_sample_len: fix
+2024-11-11 15:33:41,149:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-11 15:33:41,149:INFO:   <<< init_model: /home/zhangyuxuan-23/baseline/VATEX/model_chinese/pytorch_model.bin
+2024-11-11 15:33:41,150:INFO:   <<< language: chinese
+2024-11-11 15:33:41,150:INFO:   <<< local_rank: 0
+2024-11-11 15:33:41,150:INFO:   <<< logdir: None
+2024-11-11 15:33:41,150:INFO:   <<< lr: 0.0001
+2024-11-11 15:33:41,150:INFO:   <<< lr_decay: 0.9
+2024-11-11 15:33:41,150:INFO:   <<< max_frames: 12
+2024-11-11 15:33:41,150:INFO:   <<< max_words: 32
+2024-11-11 15:33:41,150:INFO:   <<< n_display: 100
+2024-11-11 15:33:41,151:INFO:   <<< n_gpu: 1
+2024-11-11 15:33:41,151:INFO:   <<< num_thread_reader: 8
+2024-11-11 15:33:41,151:INFO:   <<< output_dir: ckpts/val
+2024-11-11 15:33:41,151:INFO:   <<< rank: 0
+2024-11-11 15:33:41,151:INFO:   <<< seed: 42
+2024-11-11 15:33:41,151:INFO:   <<< task: retrieval
+2024-11-11 15:33:41,151:INFO:   <<< text_lr: 1e-07
+2024-11-11 15:33:41,151:INFO:   <<< top_frames: 2
+2024-11-11 15:33:41,152:INFO:   <<< use_frame_fea: True
+2024-11-11 15:33:41,152:INFO:   <<< use_temp: True
+2024-11-11 15:33:41,152:INFO:   <<< warmup_proportion: 0.1
+2024-11-11 15:33:41,152:INFO:   <<< weight_decay: 0.2
+2024-11-11 15:33:41,152:INFO:   <<< world_size: 1
+2024-11-11 15:33:41,152:INFO: device: cuda:0 n_gpu: 1
+2024-11-11 15:33:48,843:INFO: loading archive file /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base
+2024-11-11 15:33:48,845:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "chinese_hidden_size": 768,
+  "co_attention_layers": 4,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 48,
+  "mlm_probability": 0.15,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pred_num_layers": 2,
+  "pretrained_clip_name": "ViT-B/32",
+  "proj_num_layers": 2,
+  "temporal_attention_heads": 8,
+  "temporal_hidden_layers": 4,
+  "temporal_hidden_size": 512,
+  "type_vocab_size": 2,
+  "vocab_size": -1,
+  "weight_FAM": 0.05,
+  "weight_FTM": 0.45,
+  "weight_FTM_finetune": 0.15,
+  "weight_MLM": 0.05,
+  "weight_VTM": 0.45,
+  "weight_VTM_finetune": 0.85
+}
+
+2024-11-11 15:33:48,845:INFO: Weight doesn't exsits. /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base/cross_pytorch_model.bin
+2024-11-11 15:33:48,846:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 15:33:53,325:INFO: 	 embed_dim: 512
+2024-11-11 15:33:53,325:INFO: 	 image_resolution: 224
+2024-11-11 15:33:53,325:INFO: 	 vision_layers: 12
+2024-11-11 15:33:53,326:INFO: 	 vision_width: 768
+2024-11-11 15:33:53,326:INFO: 	 vision_patch_size: 32
+2024-11-11 15:33:53,326:INFO: 	 context_length: 77
+2024-11-11 15:33:53,326:INFO: 	 not used vocab_size: 49408
+2024-11-11 15:33:53,326:INFO: 	 transformer_width: 512
+2024-11-11 15:33:53,326:INFO: 	 transformer_heads: 8
+2024-11-11 15:33:53,326:INFO: 	 transformer_layers: 12
+2024-11-11 15:33:55,958:INFO: name:/home/disk2/DATA/MSRVTT/hfl/chinese-roberta-wwm-ext,chinesebert_config:BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "directionality": "bidi",
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.6.1",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 21128
+}
+
+2024-11-11 15:34:08,963:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 15:34:10,747:INFO: 	 embed_dim: 512
+2024-11-11 15:34:10,748:INFO: 	 image_resolution: 224
+2024-11-11 15:34:10,748:INFO: 	 vision_layers: 12
+2024-11-11 15:34:10,748:INFO: 	 vision_width: 768
+2024-11-11 15:34:10,748:INFO: 	 vision_patch_size: 32
+2024-11-11 15:34:10,748:INFO: 	 context_length: 77
+2024-11-11 15:34:10,748:INFO: 	 not used vocab_size: 49408
+2024-11-11 15:34:10,748:INFO: 	 transformer_width: 512
+2024-11-11 15:34:10,748:INFO: 	 transformer_heads: 8
+2024-11-11 15:34:10,748:INFO: 	 transformer_layers: 12
+2024-11-11 15:34:12,936:INFO: --------------------
+2024-11-11 15:38:44,287:INFO: Effective parameters:
+2024-11-11 15:38:44,287:INFO:   <<< batch_size: 70
+2024-11-11 15:38:44,287:INFO:   <<< batch_size_val: 70
+2024-11-11 15:38:44,287:INFO:   <<< cache_dir: 
+2024-11-11 15:38:44,287:INFO:   <<< coef_lr: 0.001
+2024-11-11 15:38:44,287:INFO:   <<< cross_model: cross-base
+2024-11-11 15:38:44,287:INFO:   <<< dataset: vatex
+2024-11-11 15:38:44,287:INFO:   <<< do_eval: False
+2024-11-11 15:38:44,288:INFO:   <<< do_params: False
+2024-11-11 15:38:44,288:INFO:   <<< do_pretrain: False
+2024-11-11 15:38:44,288:INFO:   <<< do_train: True
+2024-11-11 15:38:44,288:INFO:   <<< enable_amp: False
+2024-11-11 15:38:44,288:INFO:   <<< epochs: 2
+2024-11-11 15:38:44,288:INFO:   <<< frame_sample: random
+2024-11-11 15:38:44,288:INFO:   <<< frame_sample_len: fix
+2024-11-11 15:38:44,288:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-11 15:38:44,288:INFO:   <<< init_model: /home/zhangyuxuan-23/baseline/VATEX/model_chinese/pytorch_model.bin
+2024-11-11 15:38:44,288:INFO:   <<< language: chinese
+2024-11-11 15:38:44,288:INFO:   <<< local_rank: 0
+2024-11-11 15:38:44,288:INFO:   <<< logdir: None
+2024-11-11 15:38:44,288:INFO:   <<< lr: 0.0001
+2024-11-11 15:38:44,288:INFO:   <<< lr_decay: 0.9
+2024-11-11 15:38:44,288:INFO:   <<< max_frames: 12
+2024-11-11 15:38:44,289:INFO:   <<< max_words: 32
+2024-11-11 15:38:44,289:INFO:   <<< n_display: 100
+2024-11-11 15:38:44,289:INFO:   <<< n_gpu: 1
+2024-11-11 15:38:44,289:INFO:   <<< num_thread_reader: 8
+2024-11-11 15:38:44,289:INFO:   <<< output_dir: ckpts/val
+2024-11-11 15:38:44,289:INFO:   <<< rank: 0
+2024-11-11 15:38:44,289:INFO:   <<< seed: 42
+2024-11-11 15:38:44,289:INFO:   <<< task: retrieval
+2024-11-11 15:38:44,289:INFO:   <<< text_lr: 1e-07
+2024-11-11 15:38:44,289:INFO:   <<< top_frames: 2
+2024-11-11 15:38:44,289:INFO:   <<< use_frame_fea: True
+2024-11-11 15:38:44,289:INFO:   <<< use_temp: True
+2024-11-11 15:38:44,289:INFO:   <<< warmup_proportion: 0.1
+2024-11-11 15:38:44,289:INFO:   <<< weight_decay: 0.2
+2024-11-11 15:38:44,289:INFO:   <<< world_size: 1
+2024-11-11 15:38:44,290:INFO: device: cuda:0 n_gpu: 1
+2024-11-11 15:38:44,893:INFO: loading archive file /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base
+2024-11-11 15:38:44,893:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "chinese_hidden_size": 768,
+  "co_attention_layers": 4,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 48,
+  "mlm_probability": 0.15,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pred_num_layers": 2,
+  "pretrained_clip_name": "ViT-B/32",
+  "proj_num_layers": 2,
+  "temporal_attention_heads": 8,
+  "temporal_hidden_layers": 4,
+  "temporal_hidden_size": 512,
+  "type_vocab_size": 2,
+  "vocab_size": -1,
+  "weight_FAM": 0.05,
+  "weight_FTM": 0.45,
+  "weight_FTM_finetune": 0.15,
+  "weight_MLM": 0.05,
+  "weight_VTM": 0.45,
+  "weight_VTM_finetune": 0.85
+}
+
+2024-11-11 15:38:44,894:INFO: Weight doesn't exsits. /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base/cross_pytorch_model.bin
+2024-11-11 15:38:44,894:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 15:38:46,690:INFO: 	 embed_dim: 512
+2024-11-11 15:38:46,691:INFO: 	 image_resolution: 224
+2024-11-11 15:38:46,691:INFO: 	 vision_layers: 12
+2024-11-11 15:38:46,691:INFO: 	 vision_width: 768
+2024-11-11 15:38:46,691:INFO: 	 vision_patch_size: 32
+2024-11-11 15:38:46,691:INFO: 	 context_length: 77
+2024-11-11 15:38:46,691:INFO: 	 not used vocab_size: 49408
+2024-11-11 15:38:46,691:INFO: 	 transformer_width: 512
+2024-11-11 15:38:46,691:INFO: 	 transformer_heads: 8
+2024-11-11 15:38:46,691:INFO: 	 transformer_layers: 12
+2024-11-11 15:38:48,773:INFO: name:/home/disk2/DATA/MSRVTT/hfl/chinese-roberta-wwm-ext,chinesebert_config:BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "directionality": "bidi",
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.6.1",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 21128
+}
+
+2024-11-11 15:38:50,439:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 15:38:52,217:INFO: 	 embed_dim: 512
+2024-11-11 15:38:52,217:INFO: 	 image_resolution: 224
+2024-11-11 15:38:52,217:INFO: 	 vision_layers: 12
+2024-11-11 15:38:52,217:INFO: 	 vision_width: 768
+2024-11-11 15:38:52,217:INFO: 	 vision_patch_size: 32
+2024-11-11 15:38:52,217:INFO: 	 context_length: 77
+2024-11-11 15:38:52,217:INFO: 	 not used vocab_size: 49408
+2024-11-11 15:38:52,217:INFO: 	 transformer_width: 512
+2024-11-11 15:38:52,217:INFO: 	 transformer_heads: 8
+2024-11-11 15:38:52,217:INFO: 	 transformer_layers: 12
+2024-11-11 15:38:54,314:INFO: --------------------
+2024-11-11 15:40:01,434:INFO: Effective parameters:
+2024-11-11 15:40:01,434:INFO:   <<< batch_size: 70
+2024-11-11 15:40:01,434:INFO:   <<< batch_size_val: 70
+2024-11-11 15:40:01,434:INFO:   <<< cache_dir: 
+2024-11-11 15:40:01,434:INFO:   <<< coef_lr: 0.001
+2024-11-11 15:40:01,434:INFO:   <<< cross_model: cross-base
+2024-11-11 15:40:01,434:INFO:   <<< dataset: vatex
+2024-11-11 15:40:01,435:INFO:   <<< do_eval: False
+2024-11-11 15:40:01,435:INFO:   <<< do_params: False
+2024-11-11 15:40:01,435:INFO:   <<< do_pretrain: False
+2024-11-11 15:40:01,435:INFO:   <<< do_train: True
+2024-11-11 15:40:01,435:INFO:   <<< enable_amp: False
+2024-11-11 15:40:01,435:INFO:   <<< epochs: 2
+2024-11-11 15:40:01,435:INFO:   <<< frame_sample: random
+2024-11-11 15:40:01,435:INFO:   <<< frame_sample_len: fix
+2024-11-11 15:40:01,435:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-11 15:40:01,435:INFO:   <<< init_model: /home/zhangyuxuan-23/baseline/VATEX/model_chinese/pytorch_model.bin
+2024-11-11 15:40:01,435:INFO:   <<< language: chinese
+2024-11-11 15:40:01,435:INFO:   <<< local_rank: 0
+2024-11-11 15:40:01,435:INFO:   <<< logdir: None
+2024-11-11 15:40:01,435:INFO:   <<< lr: 0.0001
+2024-11-11 15:40:01,435:INFO:   <<< lr_decay: 0.9
+2024-11-11 15:40:01,435:INFO:   <<< max_frames: 12
+2024-11-11 15:40:01,435:INFO:   <<< max_words: 32
+2024-11-11 15:40:01,435:INFO:   <<< n_display: 100
+2024-11-11 15:40:01,435:INFO:   <<< n_gpu: 1
+2024-11-11 15:40:01,435:INFO:   <<< num_thread_reader: 8
+2024-11-11 15:40:01,435:INFO:   <<< output_dir: ckpts/val
+2024-11-11 15:40:01,435:INFO:   <<< rank: 0
+2024-11-11 15:40:01,435:INFO:   <<< seed: 42
+2024-11-11 15:40:01,435:INFO:   <<< task: retrieval
+2024-11-11 15:40:01,436:INFO:   <<< text_lr: 1e-07
+2024-11-11 15:40:01,436:INFO:   <<< top_frames: 2
+2024-11-11 15:40:01,436:INFO:   <<< use_frame_fea: True
+2024-11-11 15:40:01,436:INFO:   <<< use_temp: True
+2024-11-11 15:40:01,436:INFO:   <<< warmup_proportion: 0.1
+2024-11-11 15:40:01,436:INFO:   <<< weight_decay: 0.2
+2024-11-11 15:40:01,436:INFO:   <<< world_size: 1
+2024-11-11 15:40:01,436:INFO: device: cuda:0 n_gpu: 1
+2024-11-11 15:40:02,000:INFO: loading archive file /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base
+2024-11-11 15:40:02,001:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "chinese_hidden_size": 768,
+  "co_attention_layers": 4,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 48,
+  "mlm_probability": 0.15,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pred_num_layers": 2,
+  "pretrained_clip_name": "ViT-B/32",
+  "proj_num_layers": 2,
+  "temporal_attention_heads": 8,
+  "temporal_hidden_layers": 4,
+  "temporal_hidden_size": 512,
+  "type_vocab_size": 2,
+  "vocab_size": -1,
+  "weight_FAM": 0.05,
+  "weight_FTM": 0.45,
+  "weight_FTM_finetune": 0.15,
+  "weight_MLM": 0.05,
+  "weight_VTM": 0.45,
+  "weight_VTM_finetune": 0.85
+}
+
+2024-11-11 15:40:02,001:INFO: Weight doesn't exsits. /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base/cross_pytorch_model.bin
+2024-11-11 15:40:02,001:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 15:40:03,916:INFO: 	 embed_dim: 512
+2024-11-11 15:40:03,917:INFO: 	 image_resolution: 224
+2024-11-11 15:40:03,917:INFO: 	 vision_layers: 12
+2024-11-11 15:40:03,917:INFO: 	 vision_width: 768
+2024-11-11 15:40:03,917:INFO: 	 vision_patch_size: 32
+2024-11-11 15:40:03,917:INFO: 	 context_length: 77
+2024-11-11 15:40:03,917:INFO: 	 not used vocab_size: 49408
+2024-11-11 15:40:03,917:INFO: 	 transformer_width: 512
+2024-11-11 15:40:03,917:INFO: 	 transformer_heads: 8
+2024-11-11 15:40:03,917:INFO: 	 transformer_layers: 12
+2024-11-11 15:40:05,956:INFO: name:/home/disk2/DATA/MSRVTT/hfl/chinese-roberta-wwm-ext,chinesebert_config:BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "directionality": "bidi",
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.6.1",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 21128
+}
+
+2024-11-11 15:40:07,671:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 15:40:09,461:INFO: 	 embed_dim: 512
+2024-11-11 15:40:09,461:INFO: 	 image_resolution: 224
+2024-11-11 15:40:09,461:INFO: 	 vision_layers: 12
+2024-11-11 15:40:09,461:INFO: 	 vision_width: 768
+2024-11-11 15:40:09,461:INFO: 	 vision_patch_size: 32
+2024-11-11 15:40:09,461:INFO: 	 context_length: 77
+2024-11-11 15:40:09,462:INFO: 	 not used vocab_size: 49408
+2024-11-11 15:40:09,462:INFO: 	 transformer_width: 512
+2024-11-11 15:40:09,462:INFO: 	 transformer_heads: 8
+2024-11-11 15:40:09,462:INFO: 	 transformer_layers: 12
+2024-11-11 15:40:11,655:INFO: --------------------
+2024-11-11 15:43:15,990:INFO: Effective parameters:
+2024-11-11 15:43:15,990:INFO:   <<< batch_size: 70
+2024-11-11 15:43:15,990:INFO:   <<< batch_size_val: 70
+2024-11-11 15:43:15,990:INFO:   <<< cache_dir: 
+2024-11-11 15:43:15,990:INFO:   <<< coef_lr: 0.001
+2024-11-11 15:43:15,990:INFO:   <<< cross_model: cross-base
+2024-11-11 15:43:15,990:INFO:   <<< dataset: vatex
+2024-11-11 15:43:15,990:INFO:   <<< do_eval: False
+2024-11-11 15:43:15,990:INFO:   <<< do_params: False
+2024-11-11 15:43:15,990:INFO:   <<< do_pretrain: False
+2024-11-11 15:43:15,991:INFO:   <<< do_train: True
+2024-11-11 15:43:15,991:INFO:   <<< enable_amp: False
+2024-11-11 15:43:15,991:INFO:   <<< epochs: 2
+2024-11-11 15:43:15,991:INFO:   <<< frame_sample: random
+2024-11-11 15:43:15,991:INFO:   <<< frame_sample_len: fix
+2024-11-11 15:43:15,991:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-11 15:43:15,991:INFO:   <<< init_model: /home/zhangyuxuan-23/baseline/VATEX/model_chinese/pytorch_model.bin
+2024-11-11 15:43:15,991:INFO:   <<< language: chinese
+2024-11-11 15:43:15,991:INFO:   <<< local_rank: 0
+2024-11-11 15:43:15,991:INFO:   <<< logdir: None
+2024-11-11 15:43:15,991:INFO:   <<< lr: 0.0001
+2024-11-11 15:43:15,991:INFO:   <<< lr_decay: 0.9
+2024-11-11 15:43:15,991:INFO:   <<< max_frames: 12
+2024-11-11 15:43:15,991:INFO:   <<< max_words: 32
+2024-11-11 15:43:15,991:INFO:   <<< n_display: 100
+2024-11-11 15:43:15,991:INFO:   <<< n_gpu: 1
+2024-11-11 15:43:15,991:INFO:   <<< num_thread_reader: 8
+2024-11-11 15:43:15,991:INFO:   <<< output_dir: ckpts/val
+2024-11-11 15:43:15,991:INFO:   <<< rank: 0
+2024-11-11 15:43:15,991:INFO:   <<< seed: 42
+2024-11-11 15:43:15,991:INFO:   <<< task: retrieval
+2024-11-11 15:43:15,991:INFO:   <<< text_lr: 1e-07
+2024-11-11 15:43:15,991:INFO:   <<< top_frames: 2
+2024-11-11 15:43:15,991:INFO:   <<< use_frame_fea: True
+2024-11-11 15:43:15,991:INFO:   <<< use_temp: True
+2024-11-11 15:43:15,991:INFO:   <<< warmup_proportion: 0.1
+2024-11-11 15:43:15,992:INFO:   <<< weight_decay: 0.2
+2024-11-11 15:43:15,992:INFO:   <<< world_size: 1
+2024-11-11 15:43:15,992:INFO: device: cuda:0 n_gpu: 1
+2024-11-11 15:43:16,510:INFO: loading archive file /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base
+2024-11-11 15:43:16,511:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "chinese_hidden_size": 768,
+  "co_attention_layers": 4,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 48,
+  "mlm_probability": 0.15,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pred_num_layers": 2,
+  "pretrained_clip_name": "ViT-B/32",
+  "proj_num_layers": 2,
+  "temporal_attention_heads": 8,
+  "temporal_hidden_layers": 4,
+  "temporal_hidden_size": 512,
+  "type_vocab_size": 2,
+  "vocab_size": -1,
+  "weight_FAM": 0.05,
+  "weight_FTM": 0.45,
+  "weight_FTM_finetune": 0.15,
+  "weight_MLM": 0.05,
+  "weight_VTM": 0.45,
+  "weight_VTM_finetune": 0.85
+}
+
+2024-11-11 15:43:16,512:INFO: Weight doesn't exsits. /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base/cross_pytorch_model.bin
+2024-11-11 15:43:16,512:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 15:43:18,335:INFO: 	 embed_dim: 512
+2024-11-11 15:43:18,336:INFO: 	 image_resolution: 224
+2024-11-11 15:43:18,336:INFO: 	 vision_layers: 12
+2024-11-11 15:43:18,336:INFO: 	 vision_width: 768
+2024-11-11 15:43:18,336:INFO: 	 vision_patch_size: 32
+2024-11-11 15:43:18,336:INFO: 	 context_length: 77
+2024-11-11 15:43:18,336:INFO: 	 not used vocab_size: 49408
+2024-11-11 15:43:18,336:INFO: 	 transformer_width: 512
+2024-11-11 15:43:18,336:INFO: 	 transformer_heads: 8
+2024-11-11 15:43:18,336:INFO: 	 transformer_layers: 12
+2024-11-11 15:43:20,410:INFO: name:/home/disk2/DATA/MSRVTT/hfl/chinese-roberta-wwm-ext,chinesebert_config:BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "directionality": "bidi",
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.6.1",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 21128
+}
+
+2024-11-11 15:43:22,093:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 15:43:23,880:INFO: 	 embed_dim: 512
+2024-11-11 15:43:23,880:INFO: 	 image_resolution: 224
+2024-11-11 15:43:23,880:INFO: 	 vision_layers: 12
+2024-11-11 15:43:23,880:INFO: 	 vision_width: 768
+2024-11-11 15:43:23,880:INFO: 	 vision_patch_size: 32
+2024-11-11 15:43:23,880:INFO: 	 context_length: 77
+2024-11-11 15:43:23,880:INFO: 	 not used vocab_size: 49408
+2024-11-11 15:43:23,880:INFO: 	 transformer_width: 512
+2024-11-11 15:43:23,881:INFO: 	 transformer_heads: 8
+2024-11-11 15:43:23,881:INFO: 	 transformer_layers: 12
+2024-11-11 15:43:26,040:INFO: --------------------
+2024-11-11 15:44:15,017:INFO: Effective parameters:
+2024-11-11 15:44:15,017:INFO:   <<< batch_size: 1
+2024-11-11 15:44:15,017:INFO:   <<< batch_size_val: 1
+2024-11-11 15:44:15,017:INFO:   <<< cache_dir: 
+2024-11-11 15:44:15,017:INFO:   <<< coef_lr: 0.001
+2024-11-11 15:44:15,017:INFO:   <<< cross_model: cross-base
+2024-11-11 15:44:15,017:INFO:   <<< dataset: vatex
+2024-11-11 15:44:15,017:INFO:   <<< do_eval: False
+2024-11-11 15:44:15,018:INFO:   <<< do_params: False
+2024-11-11 15:44:15,018:INFO:   <<< do_pretrain: False
+2024-11-11 15:44:15,018:INFO:   <<< do_train: True
+2024-11-11 15:44:15,018:INFO:   <<< enable_amp: False
+2024-11-11 15:44:15,018:INFO:   <<< epochs: 2
+2024-11-11 15:44:15,018:INFO:   <<< frame_sample: random
+2024-11-11 15:44:15,018:INFO:   <<< frame_sample_len: fix
+2024-11-11 15:44:15,018:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-11 15:44:15,018:INFO:   <<< init_model: /home/zhangyuxuan-23/baseline/VATEX/model_chinese/pytorch_model.bin
+2024-11-11 15:44:15,018:INFO:   <<< language: chinese
+2024-11-11 15:44:15,018:INFO:   <<< local_rank: 0
+2024-11-11 15:44:15,018:INFO:   <<< logdir: None
+2024-11-11 15:44:15,018:INFO:   <<< lr: 0.0001
+2024-11-11 15:44:15,018:INFO:   <<< lr_decay: 0.9
+2024-11-11 15:44:15,018:INFO:   <<< max_frames: 12
+2024-11-11 15:44:15,018:INFO:   <<< max_words: 32
+2024-11-11 15:44:15,018:INFO:   <<< n_display: 100
+2024-11-11 15:44:15,018:INFO:   <<< n_gpu: 1
+2024-11-11 15:44:15,018:INFO:   <<< num_thread_reader: 8
+2024-11-11 15:44:15,018:INFO:   <<< output_dir: ckpts/val
+2024-11-11 15:44:15,018:INFO:   <<< rank: 0
+2024-11-11 15:44:15,018:INFO:   <<< seed: 42
+2024-11-11 15:44:15,018:INFO:   <<< task: retrieval
+2024-11-11 15:44:15,018:INFO:   <<< text_lr: 1e-07
+2024-11-11 15:44:15,018:INFO:   <<< top_frames: 2
+2024-11-11 15:44:15,018:INFO:   <<< use_frame_fea: True
+2024-11-11 15:44:15,018:INFO:   <<< use_temp: True
+2024-11-11 15:44:15,018:INFO:   <<< warmup_proportion: 0.1
+2024-11-11 15:44:15,019:INFO:   <<< weight_decay: 0.2
+2024-11-11 15:44:15,019:INFO:   <<< world_size: 1
+2024-11-11 15:44:15,019:INFO: device: cuda:0 n_gpu: 1
+2024-11-11 15:44:15,550:INFO: loading archive file /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base
+2024-11-11 15:44:15,550:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "chinese_hidden_size": 768,
+  "co_attention_layers": 4,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 48,
+  "mlm_probability": 0.15,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pred_num_layers": 2,
+  "pretrained_clip_name": "ViT-B/32",
+  "proj_num_layers": 2,
+  "temporal_attention_heads": 8,
+  "temporal_hidden_layers": 4,
+  "temporal_hidden_size": 512,
+  "type_vocab_size": 2,
+  "vocab_size": -1,
+  "weight_FAM": 0.05,
+  "weight_FTM": 0.45,
+  "weight_FTM_finetune": 0.15,
+  "weight_MLM": 0.05,
+  "weight_VTM": 0.45,
+  "weight_VTM_finetune": 0.85
+}
+
+2024-11-11 15:44:15,550:INFO: Weight doesn't exsits. /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base/cross_pytorch_model.bin
+2024-11-11 15:44:15,551:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 15:44:17,280:INFO: 	 embed_dim: 512
+2024-11-11 15:44:17,280:INFO: 	 image_resolution: 224
+2024-11-11 15:44:17,280:INFO: 	 vision_layers: 12
+2024-11-11 15:44:17,280:INFO: 	 vision_width: 768
+2024-11-11 15:44:17,280:INFO: 	 vision_patch_size: 32
+2024-11-11 15:44:17,280:INFO: 	 context_length: 77
+2024-11-11 15:44:17,280:INFO: 	 not used vocab_size: 49408
+2024-11-11 15:44:17,280:INFO: 	 transformer_width: 512
+2024-11-11 15:44:17,280:INFO: 	 transformer_heads: 8
+2024-11-11 15:44:17,280:INFO: 	 transformer_layers: 12
+2024-11-11 15:44:19,295:INFO: name:/home/disk2/DATA/MSRVTT/hfl/chinese-roberta-wwm-ext,chinesebert_config:BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "directionality": "bidi",
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.6.1",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 21128
+}
+
+2024-11-11 15:44:20,904:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 15:44:22,637:INFO: 	 embed_dim: 512
+2024-11-11 15:44:22,638:INFO: 	 image_resolution: 224
+2024-11-11 15:44:22,638:INFO: 	 vision_layers: 12
+2024-11-11 15:44:22,638:INFO: 	 vision_width: 768
+2024-11-11 15:44:22,638:INFO: 	 vision_patch_size: 32
+2024-11-11 15:44:22,638:INFO: 	 context_length: 77
+2024-11-11 15:44:22,638:INFO: 	 not used vocab_size: 49408
+2024-11-11 15:44:22,638:INFO: 	 transformer_width: 512
+2024-11-11 15:44:22,638:INFO: 	 transformer_heads: 8
+2024-11-11 15:44:22,638:INFO: 	 transformer_layers: 12
+2024-11-11 15:44:24,685:INFO: --------------------
+2024-11-11 15:46:26,649:INFO: Effective parameters:
+2024-11-11 15:46:26,649:INFO:   <<< batch_size: 1
+2024-11-11 15:46:26,649:INFO:   <<< batch_size_val: 1
+2024-11-11 15:46:26,649:INFO:   <<< cache_dir: 
+2024-11-11 15:46:26,649:INFO:   <<< coef_lr: 0.001
+2024-11-11 15:46:26,649:INFO:   <<< cross_model: cross-base
+2024-11-11 15:46:26,649:INFO:   <<< dataset: vatex
+2024-11-11 15:46:26,649:INFO:   <<< do_eval: False
+2024-11-11 15:46:26,649:INFO:   <<< do_params: False
+2024-11-11 15:46:26,649:INFO:   <<< do_pretrain: False
+2024-11-11 15:46:26,649:INFO:   <<< do_train: True
+2024-11-11 15:46:26,649:INFO:   <<< enable_amp: False
+2024-11-11 15:46:26,649:INFO:   <<< epochs: 2
+2024-11-11 15:46:26,650:INFO:   <<< frame_sample: random
+2024-11-11 15:46:26,650:INFO:   <<< frame_sample_len: fix
+2024-11-11 15:46:26,650:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-11 15:46:26,650:INFO:   <<< init_model: /home/zhangyuxuan-23/baseline/VATEX/model_chinese/pytorch_model.bin
+2024-11-11 15:46:26,650:INFO:   <<< language: chinese
+2024-11-11 15:46:26,650:INFO:   <<< local_rank: 0
+2024-11-11 15:46:26,650:INFO:   <<< logdir: None
+2024-11-11 15:46:26,650:INFO:   <<< lr: 0.0001
+2024-11-11 15:46:26,650:INFO:   <<< lr_decay: 0.9
+2024-11-11 15:46:26,650:INFO:   <<< max_frames: 12
+2024-11-11 15:46:26,650:INFO:   <<< max_words: 32
+2024-11-11 15:46:26,650:INFO:   <<< n_display: 100
+2024-11-11 15:46:26,650:INFO:   <<< n_gpu: 1
+2024-11-11 15:46:26,650:INFO:   <<< num_thread_reader: 8
+2024-11-11 15:46:26,650:INFO:   <<< output_dir: ckpts/val
+2024-11-11 15:46:26,650:INFO:   <<< rank: 0
+2024-11-11 15:46:26,650:INFO:   <<< seed: 42
+2024-11-11 15:46:26,650:INFO:   <<< task: retrieval
+2024-11-11 15:46:26,650:INFO:   <<< text_lr: 1e-07
+2024-11-11 15:46:26,650:INFO:   <<< top_frames: 2
+2024-11-11 15:46:26,650:INFO:   <<< use_frame_fea: True
+2024-11-11 15:46:26,650:INFO:   <<< use_temp: True
+2024-11-11 15:46:26,650:INFO:   <<< warmup_proportion: 0.1
+2024-11-11 15:46:26,650:INFO:   <<< weight_decay: 0.2
+2024-11-11 15:46:26,651:INFO:   <<< world_size: 1
+2024-11-11 15:46:26,651:INFO: device: cuda:0 n_gpu: 1
+2024-11-11 15:46:27,257:INFO: loading archive file /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base
+2024-11-11 15:46:27,258:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "chinese_hidden_size": 768,
+  "co_attention_layers": 4,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 48,
+  "mlm_probability": 0.15,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pred_num_layers": 2,
+  "pretrained_clip_name": "ViT-B/32",
+  "proj_num_layers": 2,
+  "temporal_attention_heads": 8,
+  "temporal_hidden_layers": 4,
+  "temporal_hidden_size": 512,
+  "type_vocab_size": 2,
+  "vocab_size": -1,
+  "weight_FAM": 0.05,
+  "weight_FTM": 0.45,
+  "weight_FTM_finetune": 0.15,
+  "weight_MLM": 0.05,
+  "weight_VTM": 0.45,
+  "weight_VTM_finetune": 0.85
+}
+
+2024-11-11 15:46:27,259:INFO: Weight doesn't exsits. /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base/cross_pytorch_model.bin
+2024-11-11 15:46:27,259:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 15:46:29,196:INFO: 	 embed_dim: 512
+2024-11-11 15:46:29,196:INFO: 	 image_resolution: 224
+2024-11-11 15:46:29,196:INFO: 	 vision_layers: 12
+2024-11-11 15:46:29,196:INFO: 	 vision_width: 768
+2024-11-11 15:46:29,196:INFO: 	 vision_patch_size: 32
+2024-11-11 15:46:29,196:INFO: 	 context_length: 77
+2024-11-11 15:46:29,196:INFO: 	 not used vocab_size: 49408
+2024-11-11 15:46:29,196:INFO: 	 transformer_width: 512
+2024-11-11 15:46:29,196:INFO: 	 transformer_heads: 8
+2024-11-11 15:46:29,196:INFO: 	 transformer_layers: 12
+2024-11-11 15:46:31,254:INFO: name:/home/disk2/DATA/MSRVTT/hfl/chinese-roberta-wwm-ext,chinesebert_config:BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "directionality": "bidi",
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.6.1",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 21128
+}
+
+2024-11-11 15:46:32,981:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 15:46:34,737:INFO: 	 embed_dim: 512
+2024-11-11 15:46:34,737:INFO: 	 image_resolution: 224
+2024-11-11 15:46:34,737:INFO: 	 vision_layers: 12
+2024-11-11 15:46:34,737:INFO: 	 vision_width: 768
+2024-11-11 15:46:34,737:INFO: 	 vision_patch_size: 32
+2024-11-11 15:46:34,738:INFO: 	 context_length: 77
+2024-11-11 15:46:34,738:INFO: 	 not used vocab_size: 49408
+2024-11-11 15:46:34,738:INFO: 	 transformer_width: 512
+2024-11-11 15:46:34,738:INFO: 	 transformer_heads: 8
+2024-11-11 15:46:34,738:INFO: 	 transformer_layers: 12
+2024-11-11 15:46:36,918:INFO: --------------------
+2024-11-11 15:47:55,846:INFO: Effective parameters:
+2024-11-11 15:47:55,846:INFO:   <<< batch_size: 70
+2024-11-11 15:47:55,846:INFO:   <<< batch_size_val: 70
+2024-11-11 15:47:55,846:INFO:   <<< cache_dir: 
+2024-11-11 15:47:55,846:INFO:   <<< coef_lr: 0.001
+2024-11-11 15:47:55,846:INFO:   <<< cross_model: cross-base
+2024-11-11 15:47:55,846:INFO:   <<< dataset: vatex
+2024-11-11 15:47:55,846:INFO:   <<< do_eval: False
+2024-11-11 15:47:55,847:INFO:   <<< do_params: False
+2024-11-11 15:47:55,847:INFO:   <<< do_pretrain: False
+2024-11-11 15:47:55,847:INFO:   <<< do_train: True
+2024-11-11 15:47:55,847:INFO:   <<< enable_amp: False
+2024-11-11 15:47:55,847:INFO:   <<< epochs: 2
+2024-11-11 15:47:55,847:INFO:   <<< frame_sample: random
+2024-11-11 15:47:55,847:INFO:   <<< frame_sample_len: fix
+2024-11-11 15:47:55,847:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-11 15:47:55,847:INFO:   <<< init_model: /home/zhangyuxuan-23/baseline/VATEX/model_chinese/pytorch_model.bin
+2024-11-11 15:47:55,847:INFO:   <<< language: chinese
+2024-11-11 15:47:55,847:INFO:   <<< local_rank: 0
+2024-11-11 15:47:55,847:INFO:   <<< logdir: None
+2024-11-11 15:47:55,847:INFO:   <<< lr: 0.0001
+2024-11-11 15:47:55,847:INFO:   <<< lr_decay: 0.9
+2024-11-11 15:47:55,847:INFO:   <<< max_frames: 12
+2024-11-11 15:47:55,847:INFO:   <<< max_words: 32
+2024-11-11 15:47:55,847:INFO:   <<< n_display: 100
+2024-11-11 15:47:55,847:INFO:   <<< n_gpu: 1
+2024-11-11 15:47:55,847:INFO:   <<< num_thread_reader: 8
+2024-11-11 15:47:55,847:INFO:   <<< output_dir: ckpts/val
+2024-11-11 15:47:55,847:INFO:   <<< rank: 0
+2024-11-11 15:47:55,848:INFO:   <<< seed: 42
+2024-11-11 15:47:55,848:INFO:   <<< task: retrieval
+2024-11-11 15:47:55,848:INFO:   <<< text_lr: 1e-07
+2024-11-11 15:47:55,848:INFO:   <<< top_frames: 2
+2024-11-11 15:47:55,848:INFO:   <<< use_frame_fea: True
+2024-11-11 15:47:55,848:INFO:   <<< use_temp: True
+2024-11-11 15:47:55,848:INFO:   <<< warmup_proportion: 0.1
+2024-11-11 15:47:55,848:INFO:   <<< weight_decay: 0.2
+2024-11-11 15:47:55,848:INFO:   <<< world_size: 1
+2024-11-11 15:47:55,848:INFO: device: cuda:0 n_gpu: 1
+2024-11-11 15:47:56,363:INFO: loading archive file /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base
+2024-11-11 15:47:56,364:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "chinese_hidden_size": 768,
+  "co_attention_layers": 4,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 48,
+  "mlm_probability": 0.15,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pred_num_layers": 2,
+  "pretrained_clip_name": "ViT-B/32",
+  "proj_num_layers": 2,
+  "temporal_attention_heads": 8,
+  "temporal_hidden_layers": 4,
+  "temporal_hidden_size": 512,
+  "type_vocab_size": 2,
+  "vocab_size": -1,
+  "weight_FAM": 0.05,
+  "weight_FTM": 0.45,
+  "weight_FTM_finetune": 0.15,
+  "weight_MLM": 0.05,
+  "weight_VTM": 0.45,
+  "weight_VTM_finetune": 0.85
+}
+
+2024-11-11 15:47:56,364:INFO: Weight doesn't exsits. /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base/cross_pytorch_model.bin
+2024-11-11 15:47:56,364:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 15:47:58,148:INFO: 	 embed_dim: 512
+2024-11-11 15:47:58,148:INFO: 	 image_resolution: 224
+2024-11-11 15:47:58,149:INFO: 	 vision_layers: 12
+2024-11-11 15:47:58,149:INFO: 	 vision_width: 768
+2024-11-11 15:47:58,149:INFO: 	 vision_patch_size: 32
+2024-11-11 15:47:58,149:INFO: 	 context_length: 77
+2024-11-11 15:47:58,149:INFO: 	 not used vocab_size: 49408
+2024-11-11 15:47:58,149:INFO: 	 transformer_width: 512
+2024-11-11 15:47:58,149:INFO: 	 transformer_heads: 8
+2024-11-11 15:47:58,149:INFO: 	 transformer_layers: 12
+2024-11-11 15:48:00,192:INFO: name:/home/disk2/DATA/MSRVTT/hfl/chinese-roberta-wwm-ext,chinesebert_config:BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "directionality": "bidi",
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.6.1",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 21128
+}
+
+2024-11-11 15:48:01,873:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 15:48:03,616:INFO: 	 embed_dim: 512
+2024-11-11 15:48:03,616:INFO: 	 image_resolution: 224
+2024-11-11 15:48:03,616:INFO: 	 vision_layers: 12
+2024-11-11 15:48:03,616:INFO: 	 vision_width: 768
+2024-11-11 15:48:03,616:INFO: 	 vision_patch_size: 32
+2024-11-11 15:48:03,616:INFO: 	 context_length: 77
+2024-11-11 15:48:03,616:INFO: 	 not used vocab_size: 49408
+2024-11-11 15:48:03,616:INFO: 	 transformer_width: 512
+2024-11-11 15:48:03,617:INFO: 	 transformer_heads: 8
+2024-11-11 15:48:03,617:INFO: 	 transformer_layers: 12
+2024-11-11 15:48:05,777:INFO: --------------------
+2024-11-11 15:48:14,164:INFO: ***** Running test *****
+2024-11-11 15:48:14,164:INFO:   Num examples = 2941
+2024-11-11 15:48:14,164:INFO:   Batch size = 70
+2024-11-11 15:48:14,165:INFO:   Num steps = 43
+2024-11-11 15:48:14,568:INFO: ***** Running training *****
+2024-11-11 15:48:14,569:INFO:   Num examples = 2941
+2024-11-11 15:48:14,569:INFO:   Batch size = 70
+2024-11-11 15:48:14,569:INFO:   Num steps = 86
+2024-11-11 15:51:30,809:INFO: data loader time:196.2363986968994
+2024-11-11 15:54:58,369:INFO: Effective parameters:
+2024-11-11 15:54:58,370:INFO:   <<< batch_size: 10
+2024-11-11 15:54:58,370:INFO:   <<< batch_size_val: 10
+2024-11-11 15:54:58,370:INFO:   <<< cache_dir: 
+2024-11-11 15:54:58,370:INFO:   <<< coef_lr: 0.001
+2024-11-11 15:54:58,370:INFO:   <<< cross_model: cross-base
+2024-11-11 15:54:58,370:INFO:   <<< dataset: vatex
+2024-11-11 15:54:58,370:INFO:   <<< do_eval: False
+2024-11-11 15:54:58,370:INFO:   <<< do_params: False
+2024-11-11 15:54:58,370:INFO:   <<< do_pretrain: False
+2024-11-11 15:54:58,370:INFO:   <<< do_train: True
+2024-11-11 15:54:58,370:INFO:   <<< enable_amp: False
+2024-11-11 15:54:58,370:INFO:   <<< epochs: 2
+2024-11-11 15:54:58,370:INFO:   <<< frame_sample: random
+2024-11-11 15:54:58,370:INFO:   <<< frame_sample_len: fix
+2024-11-11 15:54:58,370:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-11 15:54:58,370:INFO:   <<< init_model: /home/zhangyuxuan-23/baseline/VATEX/model_chinese/pytorch_model.bin
+2024-11-11 15:54:58,370:INFO:   <<< language: chinese
+2024-11-11 15:54:58,370:INFO:   <<< local_rank: 0
+2024-11-11 15:54:58,370:INFO:   <<< logdir: None
+2024-11-11 15:54:58,370:INFO:   <<< lr: 0.0001
+2024-11-11 15:54:58,370:INFO:   <<< lr_decay: 0.9
+2024-11-11 15:54:58,370:INFO:   <<< max_frames: 12
+2024-11-11 15:54:58,370:INFO:   <<< max_words: 32
+2024-11-11 15:54:58,371:INFO:   <<< n_display: 100
+2024-11-11 15:54:58,371:INFO:   <<< n_gpu: 1
+2024-11-11 15:54:58,371:INFO:   <<< num_thread_reader: 8
+2024-11-11 15:54:58,371:INFO:   <<< output_dir: ckpts/val
+2024-11-11 15:54:58,371:INFO:   <<< rank: 0
+2024-11-11 15:54:58,371:INFO:   <<< seed: 42
+2024-11-11 15:54:58,371:INFO:   <<< task: retrieval
+2024-11-11 15:54:58,371:INFO:   <<< text_lr: 1e-07
+2024-11-11 15:54:58,371:INFO:   <<< top_frames: 2
+2024-11-11 15:54:58,371:INFO:   <<< use_frame_fea: True
+2024-11-11 15:54:58,371:INFO:   <<< use_temp: True
+2024-11-11 15:54:58,371:INFO:   <<< warmup_proportion: 0.1
+2024-11-11 15:54:58,371:INFO:   <<< weight_decay: 0.2
+2024-11-11 15:54:58,371:INFO:   <<< world_size: 1
+2024-11-11 15:54:58,371:INFO: device: cuda:0 n_gpu: 1
+2024-11-11 15:54:58,902:INFO: loading archive file /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base
+2024-11-11 15:54:58,903:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "chinese_hidden_size": 768,
+  "co_attention_layers": 4,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 48,
+  "mlm_probability": 0.15,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pred_num_layers": 2,
+  "pretrained_clip_name": "ViT-B/32",
+  "proj_num_layers": 2,
+  "temporal_attention_heads": 8,
+  "temporal_hidden_layers": 4,
+  "temporal_hidden_size": 512,
+  "type_vocab_size": 2,
+  "vocab_size": -1,
+  "weight_FAM": 0.05,
+  "weight_FTM": 0.45,
+  "weight_FTM_finetune": 0.15,
+  "weight_MLM": 0.05,
+  "weight_VTM": 0.45,
+  "weight_VTM_finetune": 0.85
+}
+
+2024-11-11 15:54:58,903:INFO: Weight doesn't exsits. /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base/cross_pytorch_model.bin
+2024-11-11 15:54:58,903:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 15:55:00,669:INFO: 	 embed_dim: 512
+2024-11-11 15:55:00,670:INFO: 	 image_resolution: 224
+2024-11-11 15:55:00,670:INFO: 	 vision_layers: 12
+2024-11-11 15:55:00,670:INFO: 	 vision_width: 768
+2024-11-11 15:55:00,670:INFO: 	 vision_patch_size: 32
+2024-11-11 15:55:00,670:INFO: 	 context_length: 77
+2024-11-11 15:55:00,670:INFO: 	 not used vocab_size: 49408
+2024-11-11 15:55:00,670:INFO: 	 transformer_width: 512
+2024-11-11 15:55:00,670:INFO: 	 transformer_heads: 8
+2024-11-11 15:55:00,670:INFO: 	 transformer_layers: 12
+2024-11-11 15:55:02,803:INFO: name:/home/disk2/DATA/MSRVTT/hfl/chinese-roberta-wwm-ext,chinesebert_config:BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "directionality": "bidi",
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.6.1",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 21128
+}
+
+2024-11-11 15:55:04,442:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 15:55:06,157:INFO: 	 embed_dim: 512
+2024-11-11 15:55:06,158:INFO: 	 image_resolution: 224
+2024-11-11 15:55:06,158:INFO: 	 vision_layers: 12
+2024-11-11 15:55:06,158:INFO: 	 vision_width: 768
+2024-11-11 15:55:06,158:INFO: 	 vision_patch_size: 32
+2024-11-11 15:55:06,158:INFO: 	 context_length: 77
+2024-11-11 15:55:06,158:INFO: 	 not used vocab_size: 49408
+2024-11-11 15:55:06,158:INFO: 	 transformer_width: 512
+2024-11-11 15:55:06,158:INFO: 	 transformer_heads: 8
+2024-11-11 15:55:06,158:INFO: 	 transformer_layers: 12
+2024-11-11 15:55:08,221:INFO: --------------------
+2024-11-11 15:55:16,938:INFO: ***** Running test *****
+2024-11-11 15:55:16,939:INFO:   Num examples = 2940
+2024-11-11 15:55:16,939:INFO:   Batch size = 10
+2024-11-11 15:55:16,939:INFO:   Num steps = 294
+2024-11-11 15:55:17,070:INFO: ***** Running training *****
+2024-11-11 15:55:17,071:INFO:   Num examples = 2940
+2024-11-11 15:55:17,071:INFO:   Batch size = 10
+2024-11-11 15:55:17,071:INFO:   Num steps = 588
+2024-11-11 15:55:33,749:INFO: data loader time:16.676469087600708
+2024-11-11 15:55:47,363:INFO: Reducer buckets have been rebuilt in this iteration.
+2024-11-11 16:01:45,170:INFO: loss:3.199514150619507,frame_loss:0.05047106742858887,sim_loss:3.149043083190918,type:torch.float32,sim_matrix.shape:torch.Size([10, 10])
+2024-11-11 16:01:45,308:INFO: forward_time:0.13315558433532715,backward_time:0.13590097427368164
+2024-11-11 16:01:45,524:INFO: Epoch: 1/2, Step: 100/294, Lr: 0.000000093-0.000000093-0.000093032, Loss: 3.199514, Time/step: 3.884518
+2024-11-11 16:02:25,449:INFO: data loader time:39.92477107048035
+2024-11-11 16:07:52,874:INFO: loss:3.321855306625366,frame_loss:-0.0036051273345947266,sim_loss:3.325460433959961,type:torch.float32,sim_matrix.shape:torch.Size([10, 10])
+2024-11-11 16:07:52,997:INFO: forward_time:0.13376569747924805,backward_time:0.12010025978088379
+2024-11-11 16:07:53,150:INFO: Epoch: 1/2, Step: 200/294, Lr: 0.000000074-0.000000074-0.000074069, Loss: 3.321855, Time/step: 3.676257
+2024-11-11 16:07:53,150:INFO: data loader time:0.00012111663818359375
+2024-11-11 16:12:42,378:INFO: Epoch 1/2 Finished, Train Loss: 4.349052
+2024-11-11 16:12:44,464:INFO: Model saved to ckpts/val/pytorch_model.bin.0
+2024-11-11 16:12:44,537:INFO: args.task:retrieval
+2024-11-11 16:12:44,538:INFO: multi_sentence_:True
+2024-11-11 16:20:11,818:INFO: n_gpu:1
+2024-11-11 16:21:14,332:INFO: sim matrix size:  (2940, 1470)
+2024-11-11 16:21:14,367:INFO: before reshape, sim matrix size: 2940 x 1470
+2024-11-11 16:21:14,449:INFO: after reshape, sim matrix size: 1470 x 2 x 1470
+2024-11-11 16:21:15,364:INFO: Text-to-Video:
+2024-11-11 16:21:15,364:INFO: 	>>>  R@1: 1.5 - R@5: 5.5 - R@10: 8.8 - Median R: 139.0 - Mean R: 197.2
+2024-11-11 16:21:15,364:INFO: Video-to-Text:
+2024-11-11 16:21:15,364:INFO: 	>>>  V2T$R@1: 0.1 - V2T$R@5: 0.6 - V2T$R@10: 1.2 - V2T$Median R: 247.0 - V2T$Mean R: 244.7
+2024-11-11 16:21:15,370:INFO: The best model is: ckpts/val/pytorch_model.bin.0, the R1 is: 1.5306
+2024-11-11 16:21:35,724:INFO: loss:3.388367176055908,frame_loss:0.030714750289916992,sim_loss:3.357652425765991,type:torch.float32,sim_matrix.shape:torch.Size([10, 10])
+2024-11-11 16:21:35,834:INFO: forward_time:0.13343262672424316,backward_time:0.10751819610595703
+2024-11-11 16:21:35,986:INFO: Epoch: 2/2, Step: 6/294, Lr: 0.000000048-0.000000048-0.000048397, Loss: 3.388367, Time/step: 0.206118
+2024-11-11 16:21:35,986:INFO: data loader time:0.0002434253692626953
+2024-11-11 16:24:49,329:INFO: loss:3.0570027828216553,frame_loss:0.07661175727844238,sim_loss:2.980391025543213,type:torch.float32,sim_matrix.shape:torch.Size([10, 10])
+2024-11-11 16:24:49,462:INFO: forward_time:0.13447928428649902,backward_time:0.1292705535888672
+2024-11-11 16:24:49,655:INFO: Epoch: 2/2, Step: 106/294, Lr: 0.000000023-0.000000023-0.000023173, Loss: 3.057003, Time/step: 1.936693
+2024-11-11 16:24:53,018:INFO: data loader time:3.3626534938812256
+2024-11-11 16:27:52,017:INFO: loss:2.4765782356262207,frame_loss:0.17247247695922852,sim_loss:2.304105758666992,type:torch.float32,sim_matrix.shape:torch.Size([10, 10])
+2024-11-11 16:27:52,129:INFO: forward_time:0.13510966300964355,backward_time:0.10970902442932129
+2024-11-11 16:27:52,296:INFO: Epoch: 2/2, Step: 206/294, Lr: 0.000000005-0.000000005-0.000005425, Loss: 2.476578, Time/step: 1.826405
+2024-11-11 16:27:52,297:INFO: data loader time:0.00023984909057617188
+2024-11-11 16:30:10,534:INFO: Epoch 2/2 Finished, Train Loss: 2.914059
+2024-11-11 16:30:12,649:INFO: Model saved to ckpts/val/pytorch_model.bin.1
+2024-11-11 16:30:12,726:INFO: args.task:retrieval
+2024-11-11 16:30:12,727:INFO: multi_sentence_:True
+2024-11-11 16:34:23,082:INFO: n_gpu:1
+2024-11-11 16:35:28,311:INFO: sim matrix size:  (2940, 1470)
+2024-11-11 16:35:28,312:INFO: before reshape, sim matrix size: 2940 x 1470
+2024-11-11 16:35:28,397:INFO: after reshape, sim matrix size: 1470 x 2 x 1470
+2024-11-11 16:35:29,724:INFO: Text-to-Video:
+2024-11-11 16:35:29,724:INFO: 	>>>  R@1: 2.2 - R@5: 6.3 - R@10: 10.5 - Median R: 119.0 - Mean R: 175.4
+2024-11-11 16:35:29,724:INFO: Video-to-Text:
+2024-11-11 16:35:29,724:INFO: 	>>>  V2T$R@1: 0.2 - V2T$R@5: 0.9 - V2T$R@10: 1.9 - V2T$Median R: 210.0 - V2T$Mean R: 223.1
+2024-11-11 16:35:29,735:INFO: The best model is: ckpts/val/pytorch_model.bin.1, the R1 is: 2.1769
+2024-11-11 17:21:19,948:INFO: Effective parameters:
+2024-11-11 17:21:19,948:INFO:   <<< batch_size: 1
+2024-11-11 17:21:19,948:INFO:   <<< batch_size_val: 1
+2024-11-11 17:21:19,949:INFO:   <<< cache_dir: 
+2024-11-11 17:21:19,949:INFO:   <<< coef_lr: 0.8
+2024-11-11 17:21:19,949:INFO:   <<< cross_model: cross-base
+2024-11-11 17:21:19,949:INFO:   <<< dataset: vatex
+2024-11-11 17:21:19,949:INFO:   <<< do_eval: True
+2024-11-11 17:21:19,949:INFO:   <<< do_params: False
+2024-11-11 17:21:19,949:INFO:   <<< do_pretrain: False
+2024-11-11 17:21:19,949:INFO:   <<< do_train: False
+2024-11-11 17:21:19,949:INFO:   <<< enable_amp: False
+2024-11-11 17:21:19,949:INFO:   <<< epochs: 1
+2024-11-11 17:21:19,949:INFO:   <<< frame_sample: random
+2024-11-11 17:21:19,949:INFO:   <<< frame_sample_len: fix
+2024-11-11 17:21:19,949:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-11 17:21:19,949:INFO:   <<< init_model: /home/zhangyuxuan-23/baseline/VATEX/model_chinese/pytorch_model.bin
+2024-11-11 17:21:19,949:INFO:   <<< language: chinese
+2024-11-11 17:21:19,949:INFO:   <<< local_rank: 0
+2024-11-11 17:21:19,949:INFO:   <<< logdir: None
+2024-11-11 17:21:19,949:INFO:   <<< lr: 0.0001
+2024-11-11 17:21:19,949:INFO:   <<< lr_decay: 0.9
+2024-11-11 17:21:19,949:INFO:   <<< max_frames: 12
+2024-11-11 17:21:19,950:INFO:   <<< max_words: 32
+2024-11-11 17:21:19,950:INFO:   <<< n_display: 1
+2024-11-11 17:21:19,950:INFO:   <<< n_gpu: 1
+2024-11-11 17:21:19,950:INFO:   <<< num_thread_reader: 8
+2024-11-11 17:21:19,950:INFO:   <<< output_dir: ckpts/val
+2024-11-11 17:21:19,950:INFO:   <<< rank: 0
+2024-11-11 17:21:19,950:INFO:   <<< seed: 42
+2024-11-11 17:21:19,950:INFO:   <<< task: retrieval
+2024-11-11 17:21:19,950:INFO:   <<< text_lr: 3e-05
+2024-11-11 17:21:19,950:INFO:   <<< top_frames: 3
+2024-11-11 17:21:19,950:INFO:   <<< use_frame_fea: True
+2024-11-11 17:21:19,950:INFO:   <<< use_temp: True
+2024-11-11 17:21:19,950:INFO:   <<< warmup_proportion: 0.1
+2024-11-11 17:21:19,950:INFO:   <<< weight_decay: 0.2
+2024-11-11 17:21:19,950:INFO:   <<< world_size: 1
+2024-11-11 17:21:19,950:INFO: device: cuda:0 n_gpu: 1
+2024-11-11 17:21:20,608:INFO: loading archive file /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base
+2024-11-11 17:21:20,608:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "chinese_hidden_size": 768,
+  "co_attention_layers": 4,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 48,
+  "mlm_probability": 0.15,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pred_num_layers": 2,
+  "pretrained_clip_name": "ViT-B/32",
+  "proj_num_layers": 2,
+  "temporal_attention_heads": 8,
+  "temporal_hidden_layers": 4,
+  "temporal_hidden_size": 512,
+  "type_vocab_size": 2,
+  "vocab_size": -1,
+  "weight_FAM": 0.05,
+  "weight_FTM": 0.45,
+  "weight_FTM_finetune": 0.15,
+  "weight_MLM": 0.05,
+  "weight_VTM": 0.45,
+  "weight_VTM_finetune": 0.85
+}
+
+2024-11-11 17:21:20,609:INFO: Weight doesn't exsits. /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base/cross_pytorch_model.bin
+2024-11-11 17:21:20,609:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 17:21:22,695:INFO: 	 embed_dim: 512
+2024-11-11 17:21:22,695:INFO: 	 image_resolution: 224
+2024-11-11 17:21:22,695:INFO: 	 vision_layers: 12
+2024-11-11 17:21:22,695:INFO: 	 vision_width: 768
+2024-11-11 17:21:22,695:INFO: 	 vision_patch_size: 32
+2024-11-11 17:21:22,695:INFO: 	 context_length: 77
+2024-11-11 17:21:22,695:INFO: 	 not used vocab_size: 49408
+2024-11-11 17:21:22,695:INFO: 	 transformer_width: 512
+2024-11-11 17:21:22,695:INFO: 	 transformer_heads: 8
+2024-11-11 17:21:22,695:INFO: 	 transformer_layers: 12
+2024-11-11 17:21:24,839:INFO: name:/home/disk2/DATA/MSRVTT/hfl/chinese-roberta-wwm-ext,chinesebert_config:BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "directionality": "bidi",
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.6.1",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 21128
+}
+
+2024-11-11 17:21:26,714:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 17:21:28,743:INFO: 	 embed_dim: 512
+2024-11-11 17:21:28,744:INFO: 	 image_resolution: 224
+2024-11-11 17:21:28,744:INFO: 	 vision_layers: 12
+2024-11-11 17:21:28,744:INFO: 	 vision_width: 768
+2024-11-11 17:21:28,744:INFO: 	 vision_patch_size: 32
+2024-11-11 17:21:28,744:INFO: 	 context_length: 77
+2024-11-11 17:21:28,744:INFO: 	 not used vocab_size: 49408
+2024-11-11 17:21:28,744:INFO: 	 transformer_width: 512
+2024-11-11 17:21:28,744:INFO: 	 transformer_heads: 8
+2024-11-11 17:21:28,744:INFO: 	 transformer_layers: 12
+2024-11-11 17:21:31,469:INFO: --------------------
+2024-11-11 17:21:41,252:INFO: ***** Running test *****
+2024-11-11 17:21:41,252:INFO:   Num examples = 10
+2024-11-11 17:21:41,252:INFO:   Batch size = 1
+2024-11-11 17:21:41,252:INFO:   Num steps = 10
+2024-11-11 17:21:41,257:INFO: args.task:retrieval
+2024-11-11 17:21:41,257:INFO: multi_sentence_:True
+2024-11-11 17:21:43,999:INFO: n_gpu:1
+2024-11-11 17:22:55,086:INFO: Effective parameters:
+2024-11-11 17:22:55,087:INFO:   <<< batch_size: 2
+2024-11-11 17:22:55,087:INFO:   <<< batch_size_val: 2
+2024-11-11 17:22:55,087:INFO:   <<< cache_dir: 
+2024-11-11 17:22:55,087:INFO:   <<< coef_lr: 0.8
+2024-11-11 17:22:55,087:INFO:   <<< cross_model: cross-base
+2024-11-11 17:22:55,087:INFO:   <<< dataset: vatex
+2024-11-11 17:22:55,087:INFO:   <<< do_eval: True
+2024-11-11 17:22:55,087:INFO:   <<< do_params: False
+2024-11-11 17:22:55,087:INFO:   <<< do_pretrain: False
+2024-11-11 17:22:55,087:INFO:   <<< do_train: False
+2024-11-11 17:22:55,088:INFO:   <<< enable_amp: False
+2024-11-11 17:22:55,088:INFO:   <<< epochs: 1
+2024-11-11 17:22:55,088:INFO:   <<< frame_sample: random
+2024-11-11 17:22:55,088:INFO:   <<< frame_sample_len: fix
+2024-11-11 17:22:55,088:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-11 17:22:55,088:INFO:   <<< init_model: /home/zhangyuxuan-23/baseline/HMMC/ckpts/val/pytorch_model.bin.1
+2024-11-11 17:22:55,088:INFO:   <<< language: chinese
+2024-11-11 17:22:55,088:INFO:   <<< local_rank: 0
+2024-11-11 17:22:55,088:INFO:   <<< logdir: None
+2024-11-11 17:22:55,088:INFO:   <<< lr: 0.0001
+2024-11-11 17:22:55,088:INFO:   <<< lr_decay: 0.9
+2024-11-11 17:22:55,088:INFO:   <<< max_frames: 12
+2024-11-11 17:22:55,089:INFO:   <<< max_words: 32
+2024-11-11 17:22:55,089:INFO:   <<< n_display: 1
+2024-11-11 17:22:55,089:INFO:   <<< n_gpu: 1
+2024-11-11 17:22:55,089:INFO:   <<< num_thread_reader: 8
+2024-11-11 17:22:55,089:INFO:   <<< output_dir: ckpts/val
+2024-11-11 17:22:55,089:INFO:   <<< rank: 0
+2024-11-11 17:22:55,089:INFO:   <<< seed: 42
+2024-11-11 17:22:55,089:INFO:   <<< task: retrieval
+2024-11-11 17:22:55,089:INFO:   <<< text_lr: 3e-05
+2024-11-11 17:22:55,089:INFO:   <<< top_frames: 3
+2024-11-11 17:22:55,089:INFO:   <<< use_frame_fea: True
+2024-11-11 17:22:55,089:INFO:   <<< use_temp: True
+2024-11-11 17:22:55,090:INFO:   <<< warmup_proportion: 0.1
+2024-11-11 17:22:55,090:INFO:   <<< weight_decay: 0.2
+2024-11-11 17:22:55,090:INFO:   <<< world_size: 1
+2024-11-11 17:22:55,090:INFO: device: cuda:0 n_gpu: 1
+2024-11-11 17:22:55,691:INFO: loading archive file /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base
+2024-11-11 17:22:55,691:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "chinese_hidden_size": 768,
+  "co_attention_layers": 4,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 48,
+  "mlm_probability": 0.15,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pred_num_layers": 2,
+  "pretrained_clip_name": "ViT-B/32",
+  "proj_num_layers": 2,
+  "temporal_attention_heads": 8,
+  "temporal_hidden_layers": 4,
+  "temporal_hidden_size": 512,
+  "type_vocab_size": 2,
+  "vocab_size": -1,
+  "weight_FAM": 0.05,
+  "weight_FTM": 0.45,
+  "weight_FTM_finetune": 0.15,
+  "weight_MLM": 0.05,
+  "weight_VTM": 0.45,
+  "weight_VTM_finetune": 0.85
+}
+
+2024-11-11 17:22:55,691:INFO: Weight doesn't exsits. /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base/cross_pytorch_model.bin
+2024-11-11 17:22:55,692:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 17:22:57,908:INFO: 	 embed_dim: 512
+2024-11-11 17:22:57,908:INFO: 	 image_resolution: 224
+2024-11-11 17:22:57,909:INFO: 	 vision_layers: 12
+2024-11-11 17:22:57,909:INFO: 	 vision_width: 768
+2024-11-11 17:22:57,909:INFO: 	 vision_patch_size: 32
+2024-11-11 17:22:57,909:INFO: 	 context_length: 77
+2024-11-11 17:22:57,909:INFO: 	 not used vocab_size: 49408
+2024-11-11 17:22:57,909:INFO: 	 transformer_width: 512
+2024-11-11 17:22:57,909:INFO: 	 transformer_heads: 8
+2024-11-11 17:22:57,909:INFO: 	 transformer_layers: 12
+2024-11-11 17:23:00,187:INFO: name:/home/disk2/DATA/MSRVTT/hfl/chinese-roberta-wwm-ext,chinesebert_config:BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "directionality": "bidi",
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.6.1",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 21128
+}
+
+2024-11-11 17:23:02,190:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 17:23:04,361:INFO: 	 embed_dim: 512
+2024-11-11 17:23:04,362:INFO: 	 image_resolution: 224
+2024-11-11 17:23:04,362:INFO: 	 vision_layers: 12
+2024-11-11 17:23:04,362:INFO: 	 vision_width: 768
+2024-11-11 17:23:04,362:INFO: 	 vision_patch_size: 32
+2024-11-11 17:23:04,362:INFO: 	 context_length: 77
+2024-11-11 17:23:04,362:INFO: 	 not used vocab_size: 49408
+2024-11-11 17:23:04,362:INFO: 	 transformer_width: 512
+2024-11-11 17:23:04,362:INFO: 	 transformer_heads: 8
+2024-11-11 17:23:04,362:INFO: 	 transformer_layers: 12
+2024-11-11 17:23:07,140:INFO: --------------------
+2024-11-11 17:23:16,751:INFO: ***** Running test *****
+2024-11-11 17:23:16,751:INFO:   Num examples = 10
+2024-11-11 17:23:16,751:INFO:   Batch size = 2
+2024-11-11 17:23:16,752:INFO:   Num steps = 5
+2024-11-11 17:23:16,758:INFO: args.task:retrieval
+2024-11-11 17:23:16,758:INFO: multi_sentence_:True
+2024-11-11 17:23:19,489:INFO: n_gpu:1
+2024-11-11 17:24:10,072:INFO: Effective parameters:
+2024-11-11 17:24:10,073:INFO:   <<< batch_size: 2
+2024-11-11 17:24:10,073:INFO:   <<< batch_size_val: 2
+2024-11-11 17:24:10,073:INFO:   <<< cache_dir: 
+2024-11-11 17:24:10,073:INFO:   <<< coef_lr: 0.8
+2024-11-11 17:24:10,073:INFO:   <<< cross_model: cross-base
+2024-11-11 17:24:10,073:INFO:   <<< dataset: vatex
+2024-11-11 17:24:10,073:INFO:   <<< do_eval: True
+2024-11-11 17:24:10,073:INFO:   <<< do_params: False
+2024-11-11 17:24:10,073:INFO:   <<< do_pretrain: False
+2024-11-11 17:24:10,073:INFO:   <<< do_train: False
+2024-11-11 17:24:10,073:INFO:   <<< enable_amp: False
+2024-11-11 17:24:10,073:INFO:   <<< epochs: 1
+2024-11-11 17:24:10,073:INFO:   <<< frame_sample: random
+2024-11-11 17:24:10,073:INFO:   <<< frame_sample_len: fix
+2024-11-11 17:24:10,074:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-11 17:24:10,074:INFO:   <<< init_model: /home/zhangyuxuan-23/baseline/HMMC/ckpts/val/pytorch_model.bin.1
+2024-11-11 17:24:10,074:INFO:   <<< language: chinese
+2024-11-11 17:24:10,074:INFO:   <<< local_rank: 0
+2024-11-11 17:24:10,074:INFO:   <<< logdir: None
+2024-11-11 17:24:10,074:INFO:   <<< lr: 0.0001
+2024-11-11 17:24:10,074:INFO:   <<< lr_decay: 0.9
+2024-11-11 17:24:10,074:INFO:   <<< max_frames: 12
+2024-11-11 17:24:10,074:INFO:   <<< max_words: 32
+2024-11-11 17:24:10,074:INFO:   <<< n_display: 1
+2024-11-11 17:24:10,074:INFO:   <<< n_gpu: 1
+2024-11-11 17:24:10,074:INFO:   <<< num_thread_reader: 8
+2024-11-11 17:24:10,074:INFO:   <<< output_dir: ckpts/val
+2024-11-11 17:24:10,074:INFO:   <<< rank: 0
+2024-11-11 17:24:10,074:INFO:   <<< seed: 42
+2024-11-11 17:24:10,075:INFO:   <<< task: retrieval
+2024-11-11 17:24:10,075:INFO:   <<< text_lr: 3e-05
+2024-11-11 17:24:10,075:INFO:   <<< top_frames: 3
+2024-11-11 17:24:10,075:INFO:   <<< use_frame_fea: True
+2024-11-11 17:24:10,075:INFO:   <<< use_temp: True
+2024-11-11 17:24:10,075:INFO:   <<< warmup_proportion: 0.1
+2024-11-11 17:24:10,075:INFO:   <<< weight_decay: 0.2
+2024-11-11 17:24:10,075:INFO:   <<< world_size: 1
+2024-11-11 17:24:10,075:INFO: device: cuda:0 n_gpu: 1
+2024-11-11 17:24:10,740:INFO: loading archive file /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base
+2024-11-11 17:24:10,741:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "chinese_hidden_size": 768,
+  "co_attention_layers": 4,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 48,
+  "mlm_probability": 0.15,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pred_num_layers": 2,
+  "pretrained_clip_name": "ViT-B/32",
+  "proj_num_layers": 2,
+  "temporal_attention_heads": 8,
+  "temporal_hidden_layers": 4,
+  "temporal_hidden_size": 512,
+  "type_vocab_size": 2,
+  "vocab_size": -1,
+  "weight_FAM": 0.05,
+  "weight_FTM": 0.45,
+  "weight_FTM_finetune": 0.15,
+  "weight_MLM": 0.05,
+  "weight_VTM": 0.45,
+  "weight_VTM_finetune": 0.85
+}
+
+2024-11-11 17:24:10,741:INFO: Weight doesn't exsits. /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base/cross_pytorch_model.bin
+2024-11-11 17:24:10,741:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 17:24:12,878:INFO: 	 embed_dim: 512
+2024-11-11 17:24:12,879:INFO: 	 image_resolution: 224
+2024-11-11 17:24:12,879:INFO: 	 vision_layers: 12
+2024-11-11 17:24:12,879:INFO: 	 vision_width: 768
+2024-11-11 17:24:12,879:INFO: 	 vision_patch_size: 32
+2024-11-11 17:24:12,879:INFO: 	 context_length: 77
+2024-11-11 17:24:12,879:INFO: 	 not used vocab_size: 49408
+2024-11-11 17:24:12,879:INFO: 	 transformer_width: 512
+2024-11-11 17:24:12,879:INFO: 	 transformer_heads: 8
+2024-11-11 17:24:12,879:INFO: 	 transformer_layers: 12
+2024-11-11 17:24:15,132:INFO: name:/home/disk2/DATA/MSRVTT/hfl/chinese-roberta-wwm-ext,chinesebert_config:BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "directionality": "bidi",
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.6.1",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 21128
+}
+
+2024-11-11 17:24:17,112:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 17:24:19,183:INFO: 	 embed_dim: 512
+2024-11-11 17:24:19,183:INFO: 	 image_resolution: 224
+2024-11-11 17:24:19,183:INFO: 	 vision_layers: 12
+2024-11-11 17:24:19,183:INFO: 	 vision_width: 768
+2024-11-11 17:24:19,183:INFO: 	 vision_patch_size: 32
+2024-11-11 17:24:19,183:INFO: 	 context_length: 77
+2024-11-11 17:24:19,183:INFO: 	 not used vocab_size: 49408
+2024-11-11 17:24:19,184:INFO: 	 transformer_width: 512
+2024-11-11 17:24:19,184:INFO: 	 transformer_heads: 8
+2024-11-11 17:24:19,184:INFO: 	 transformer_layers: 12
+2024-11-11 17:24:21,780:INFO: --------------------
+2024-11-11 17:24:31,372:INFO: ***** Running test *****
+2024-11-11 17:24:31,372:INFO:   Num examples = 12
+2024-11-11 17:24:31,372:INFO:   Batch size = 2
+2024-11-11 17:24:31,372:INFO:   Num steps = 6
+2024-11-11 17:24:31,376:INFO: args.task:retrieval
+2024-11-11 17:24:31,376:INFO: multi_sentence_:True
+2024-11-11 17:24:33,740:INFO: n_gpu:1
+2024-11-11 17:24:43,291:INFO: Effective parameters:
+2024-11-11 17:24:43,291:INFO:   <<< batch_size: 2
+2024-11-11 17:24:43,291:INFO:   <<< batch_size_val: 2
+2024-11-11 17:24:43,291:INFO:   <<< cache_dir: 
+2024-11-11 17:24:43,291:INFO:   <<< coef_lr: 0.8
+2024-11-11 17:24:43,291:INFO:   <<< cross_model: cross-base
+2024-11-11 17:24:43,291:INFO:   <<< dataset: vatex
+2024-11-11 17:24:43,291:INFO:   <<< do_eval: True
+2024-11-11 17:24:43,291:INFO:   <<< do_params: False
+2024-11-11 17:24:43,292:INFO:   <<< do_pretrain: False
+2024-11-11 17:24:43,292:INFO:   <<< do_train: False
+2024-11-11 17:24:43,292:INFO:   <<< enable_amp: False
+2024-11-11 17:24:43,292:INFO:   <<< epochs: 1
+2024-11-11 17:24:43,292:INFO:   <<< frame_sample: random
+2024-11-11 17:24:43,292:INFO:   <<< frame_sample_len: fix
+2024-11-11 17:24:43,292:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-11 17:24:43,292:INFO:   <<< init_model: /home/zhangyuxuan-23/baseline/HMMC/ckpts/val/pytorch_model.bin.1
+2024-11-11 17:24:43,292:INFO:   <<< language: chinese
+2024-11-11 17:24:43,292:INFO:   <<< local_rank: 0
+2024-11-11 17:24:43,292:INFO:   <<< logdir: None
+2024-11-11 17:24:43,292:INFO:   <<< lr: 0.0001
+2024-11-11 17:24:43,292:INFO:   <<< lr_decay: 0.9
+2024-11-11 17:24:43,293:INFO:   <<< max_frames: 12
+2024-11-11 17:24:43,293:INFO:   <<< max_words: 32
+2024-11-11 17:24:43,293:INFO:   <<< n_display: 1
+2024-11-11 17:24:43,293:INFO:   <<< n_gpu: 1
+2024-11-11 17:24:43,293:INFO:   <<< num_thread_reader: 8
+2024-11-11 17:24:43,293:INFO:   <<< output_dir: ckpts/val
+2024-11-11 17:24:43,293:INFO:   <<< rank: 0
+2024-11-11 17:24:43,293:INFO:   <<< seed: 42
+2024-11-11 17:24:43,293:INFO:   <<< task: retrieval
+2024-11-11 17:24:43,293:INFO:   <<< text_lr: 3e-05
+2024-11-11 17:24:43,293:INFO:   <<< top_frames: 3
+2024-11-11 17:24:43,293:INFO:   <<< use_frame_fea: True
+2024-11-11 17:24:43,293:INFO:   <<< use_temp: True
+2024-11-11 17:24:43,293:INFO:   <<< warmup_proportion: 0.1
+2024-11-11 17:24:43,294:INFO:   <<< weight_decay: 0.2
+2024-11-11 17:24:43,294:INFO:   <<< world_size: 1
+2024-11-11 17:24:43,294:INFO: device: cuda:0 n_gpu: 1
+2024-11-11 17:24:43,815:INFO: loading archive file /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base
+2024-11-11 17:24:43,817:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "chinese_hidden_size": 768,
+  "co_attention_layers": 4,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 48,
+  "mlm_probability": 0.15,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pred_num_layers": 2,
+  "pretrained_clip_name": "ViT-B/32",
+  "proj_num_layers": 2,
+  "temporal_attention_heads": 8,
+  "temporal_hidden_layers": 4,
+  "temporal_hidden_size": 512,
+  "type_vocab_size": 2,
+  "vocab_size": -1,
+  "weight_FAM": 0.05,
+  "weight_FTM": 0.45,
+  "weight_FTM_finetune": 0.15,
+  "weight_MLM": 0.05,
+  "weight_VTM": 0.45,
+  "weight_VTM_finetune": 0.85
+}
+
+2024-11-11 17:24:43,817:INFO: Weight doesn't exsits. /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base/cross_pytorch_model.bin
+2024-11-11 17:24:43,817:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 17:24:45,611:INFO: 	 embed_dim: 512
+2024-11-11 17:24:45,611:INFO: 	 image_resolution: 224
+2024-11-11 17:24:45,611:INFO: 	 vision_layers: 12
+2024-11-11 17:24:45,611:INFO: 	 vision_width: 768
+2024-11-11 17:24:45,611:INFO: 	 vision_patch_size: 32
+2024-11-11 17:24:45,612:INFO: 	 context_length: 77
+2024-11-11 17:24:45,612:INFO: 	 not used vocab_size: 49408
+2024-11-11 17:24:45,612:INFO: 	 transformer_width: 512
+2024-11-11 17:24:45,612:INFO: 	 transformer_heads: 8
+2024-11-11 17:24:45,612:INFO: 	 transformer_layers: 12
+2024-11-11 17:24:47,718:INFO: name:/home/disk2/DATA/MSRVTT/hfl/chinese-roberta-wwm-ext,chinesebert_config:BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "directionality": "bidi",
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.6.1",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 21128
+}
+
+2024-11-11 17:24:49,377:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 17:24:51,087:INFO: 	 embed_dim: 512
+2024-11-11 17:24:51,087:INFO: 	 image_resolution: 224
+2024-11-11 17:24:51,087:INFO: 	 vision_layers: 12
+2024-11-11 17:24:51,087:INFO: 	 vision_width: 768
+2024-11-11 17:24:51,087:INFO: 	 vision_patch_size: 32
+2024-11-11 17:24:51,087:INFO: 	 context_length: 77
+2024-11-11 17:24:51,087:INFO: 	 not used vocab_size: 49408
+2024-11-11 17:24:51,087:INFO: 	 transformer_width: 512
+2024-11-11 17:24:51,087:INFO: 	 transformer_heads: 8
+2024-11-11 17:24:51,087:INFO: 	 transformer_layers: 12
+2024-11-11 17:24:53,280:INFO: --------------------
+2024-11-11 17:25:03,736:INFO: ***** Running test *****
+2024-11-11 17:25:03,736:INFO:   Num examples = 12
+2024-11-11 17:25:03,736:INFO:   Batch size = 2
+2024-11-11 17:25:03,736:INFO:   Num steps = 6
+2024-11-11 17:25:03,741:INFO: args.task:retrieval
+2024-11-11 17:25:03,741:INFO: multi_sentence_:True
+2024-11-11 17:25:06,491:INFO: n_gpu:1
+2024-11-11 17:28:33,576:INFO: Effective parameters:
+2024-11-11 17:28:33,577:INFO:   <<< batch_size: 2
+2024-11-11 17:28:33,577:INFO:   <<< batch_size_val: 256
+2024-11-11 17:28:33,577:INFO:   <<< cache_dir: 
+2024-11-11 17:28:33,577:INFO:   <<< coef_lr: 0.8
+2024-11-11 17:28:33,577:INFO:   <<< cross_model: cross-base
+2024-11-11 17:28:33,577:INFO:   <<< dataset: vatex
+2024-11-11 17:28:33,577:INFO:   <<< do_eval: True
+2024-11-11 17:28:33,577:INFO:   <<< do_params: False
+2024-11-11 17:28:33,577:INFO:   <<< do_pretrain: False
+2024-11-11 17:28:33,577:INFO:   <<< do_train: False
+2024-11-11 17:28:33,577:INFO:   <<< enable_amp: False
+2024-11-11 17:28:33,577:INFO:   <<< epochs: 1
+2024-11-11 17:28:33,577:INFO:   <<< frame_sample: random
+2024-11-11 17:28:33,577:INFO:   <<< frame_sample_len: fix
+2024-11-11 17:28:33,577:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-11 17:28:33,577:INFO:   <<< init_model: /home/zhangyuxuan-23/baseline/HMMC/ckpts/val/pytorch_model.bin.1
+2024-11-11 17:28:33,577:INFO:   <<< language: chinese
+2024-11-11 17:28:33,577:INFO:   <<< local_rank: 0
+2024-11-11 17:28:33,578:INFO:   <<< logdir: None
+2024-11-11 17:28:33,578:INFO:   <<< lr: 0.0001
+2024-11-11 17:28:33,578:INFO:   <<< lr_decay: 0.9
+2024-11-11 17:28:33,578:INFO:   <<< max_frames: 12
+2024-11-11 17:28:33,578:INFO:   <<< max_words: 32
+2024-11-11 17:28:33,578:INFO:   <<< n_display: 1
+2024-11-11 17:28:33,578:INFO:   <<< n_gpu: 1
+2024-11-11 17:28:33,578:INFO:   <<< num_thread_reader: 8
+2024-11-11 17:28:33,578:INFO:   <<< output_dir: ckpts/val
+2024-11-11 17:28:33,578:INFO:   <<< rank: 0
+2024-11-11 17:28:33,578:INFO:   <<< seed: 42
+2024-11-11 17:28:33,578:INFO:   <<< task: retrieval
+2024-11-11 17:28:33,578:INFO:   <<< text_lr: 3e-05
+2024-11-11 17:28:33,578:INFO:   <<< top_frames: 3
+2024-11-11 17:28:33,578:INFO:   <<< use_frame_fea: True
+2024-11-11 17:28:33,578:INFO:   <<< use_temp: True
+2024-11-11 17:28:33,578:INFO:   <<< warmup_proportion: 0.1
+2024-11-11 17:28:33,578:INFO:   <<< weight_decay: 0.2
+2024-11-11 17:28:33,578:INFO:   <<< world_size: 1
+2024-11-11 17:28:33,578:INFO: device: cuda:0 n_gpu: 1
+2024-11-11 17:28:34,092:INFO: loading archive file /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base
+2024-11-11 17:28:34,093:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "chinese_hidden_size": 768,
+  "co_attention_layers": 4,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 48,
+  "mlm_probability": 0.15,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pred_num_layers": 2,
+  "pretrained_clip_name": "ViT-B/32",
+  "proj_num_layers": 2,
+  "temporal_attention_heads": 8,
+  "temporal_hidden_layers": 4,
+  "temporal_hidden_size": 512,
+  "type_vocab_size": 2,
+  "vocab_size": -1,
+  "weight_FAM": 0.05,
+  "weight_FTM": 0.45,
+  "weight_FTM_finetune": 0.15,
+  "weight_MLM": 0.05,
+  "weight_VTM": 0.45,
+  "weight_VTM_finetune": 0.85
+}
+
+2024-11-11 17:28:34,093:INFO: Weight doesn't exsits. /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base/cross_pytorch_model.bin
+2024-11-11 17:28:34,093:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 17:28:36,151:INFO: 	 embed_dim: 512
+2024-11-11 17:28:36,152:INFO: 	 image_resolution: 224
+2024-11-11 17:28:36,152:INFO: 	 vision_layers: 12
+2024-11-11 17:28:36,152:INFO: 	 vision_width: 768
+2024-11-11 17:28:36,152:INFO: 	 vision_patch_size: 32
+2024-11-11 17:28:36,152:INFO: 	 context_length: 77
+2024-11-11 17:28:36,152:INFO: 	 not used vocab_size: 49408
+2024-11-11 17:28:36,152:INFO: 	 transformer_width: 512
+2024-11-11 17:28:36,152:INFO: 	 transformer_heads: 8
+2024-11-11 17:28:36,152:INFO: 	 transformer_layers: 12
+2024-11-11 17:28:38,691:INFO: name:/home/disk2/DATA/MSRVTT/hfl/chinese-roberta-wwm-ext,chinesebert_config:BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "directionality": "bidi",
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.6.1",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 21128
+}
+
+2024-11-11 17:28:40,590:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 17:28:42,468:INFO: 	 embed_dim: 512
+2024-11-11 17:28:42,469:INFO: 	 image_resolution: 224
+2024-11-11 17:28:42,469:INFO: 	 vision_layers: 12
+2024-11-11 17:28:42,469:INFO: 	 vision_width: 768
+2024-11-11 17:28:42,469:INFO: 	 vision_patch_size: 32
+2024-11-11 17:28:42,469:INFO: 	 context_length: 77
+2024-11-11 17:28:42,469:INFO: 	 not used vocab_size: 49408
+2024-11-11 17:28:42,469:INFO: 	 transformer_width: 512
+2024-11-11 17:28:42,469:INFO: 	 transformer_heads: 8
+2024-11-11 17:28:42,469:INFO: 	 transformer_layers: 12
+2024-11-11 17:28:44,742:INFO: --------------------
+2024-11-11 17:28:54,144:INFO: ***** Running test *****
+2024-11-11 17:28:54,144:INFO:   Num examples = 12
+2024-11-11 17:28:54,144:INFO:   Batch size = 256
+2024-11-11 17:28:54,145:INFO:   Num steps = 1
+2024-11-11 17:28:54,152:INFO: args.task:retrieval
+2024-11-11 17:28:54,152:INFO: multi_sentence_:True
+2024-11-11 17:28:59,093:INFO: n_gpu:1
+2024-11-11 17:28:59,139:INFO: sim matrix size:  (12, 6)
+2024-11-11 17:28:59,139:INFO: before reshape, sim matrix size: 12 x 6
+2024-11-11 17:28:59,140:INFO: after reshape, sim matrix size: 6 x 2 x 6
+2024-11-11 17:28:59,145:INFO: Text-to-Video:
+2024-11-11 17:28:59,145:INFO: 	>>>  R@1: 25.0 - R@5: 91.7 - R@10: 100.0 - Median R: 3.0 - Mean R: 3.1
+2024-11-11 17:28:59,145:INFO: Video-to-Text:
+2024-11-11 17:28:59,146:INFO: 	>>>  V2T$R@1: 33.3 - V2T$R@5: 83.3 - V2T$R@10: 100.0 - V2T$Median R: 2.0 - V2T$Mean R: 2.7
+2024-11-11 17:33:50,732:INFO: Effective parameters:
+2024-11-11 17:33:50,732:INFO:   <<< batch_size: 10
+2024-11-11 17:33:50,732:INFO:   <<< batch_size_val: 256
+2024-11-11 17:33:50,732:INFO:   <<< cache_dir: 
+2024-11-11 17:33:50,732:INFO:   <<< coef_lr: 0.001
+2024-11-11 17:33:50,732:INFO:   <<< cross_model: cross-base
+2024-11-11 17:33:50,732:INFO:   <<< dataset: vatex
+2024-11-11 17:33:50,732:INFO:   <<< do_eval: False
+2024-11-11 17:33:50,732:INFO:   <<< do_params: False
+2024-11-11 17:33:50,732:INFO:   <<< do_pretrain: False
+2024-11-11 17:33:50,733:INFO:   <<< do_train: True
+2024-11-11 17:33:50,733:INFO:   <<< enable_amp: False
+2024-11-11 17:33:50,733:INFO:   <<< epochs: 2
+2024-11-11 17:33:50,733:INFO:   <<< frame_sample: random
+2024-11-11 17:33:50,733:INFO:   <<< frame_sample_len: fix
+2024-11-11 17:33:50,733:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-11 17:33:50,733:INFO:   <<< init_model: /home/zhangyuxuan-23/baseline/VATEX/model_chinese/pytorch_model.bin
+2024-11-11 17:33:50,733:INFO:   <<< language: chinese
+2024-11-11 17:33:50,733:INFO:   <<< local_rank: 0
+2024-11-11 17:33:50,733:INFO:   <<< logdir: None
+2024-11-11 17:33:50,733:INFO:   <<< lr: 0.0001
+2024-11-11 17:33:50,733:INFO:   <<< lr_decay: 0.9
+2024-11-11 17:33:50,733:INFO:   <<< max_frames: 12
+2024-11-11 17:33:50,733:INFO:   <<< max_words: 32
+2024-11-11 17:33:50,733:INFO:   <<< n_display: 100
+2024-11-11 17:33:50,733:INFO:   <<< n_gpu: 1
+2024-11-11 17:33:50,733:INFO:   <<< num_thread_reader: 8
+2024-11-11 17:33:50,733:INFO:   <<< output_dir: ckpts/val
+2024-11-11 17:33:50,734:INFO:   <<< rank: 0
+2024-11-11 17:33:50,734:INFO:   <<< seed: 42
+2024-11-11 17:33:50,734:INFO:   <<< task: retrieval
+2024-11-11 17:33:50,734:INFO:   <<< text_lr: 1e-07
+2024-11-11 17:33:50,734:INFO:   <<< top_frames: 2
+2024-11-11 17:33:50,734:INFO:   <<< use_frame_fea: True
+2024-11-11 17:33:50,734:INFO:   <<< use_temp: True
+2024-11-11 17:33:50,734:INFO:   <<< warmup_proportion: 0.1
+2024-11-11 17:33:50,734:INFO:   <<< weight_decay: 0.2
+2024-11-11 17:33:50,734:INFO:   <<< world_size: 1
+2024-11-11 17:33:50,734:INFO: device: cuda:0 n_gpu: 1
+2024-11-11 17:33:51,281:INFO: loading archive file /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base
+2024-11-11 17:33:51,282:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "chinese_hidden_size": 768,
+  "co_attention_layers": 4,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 48,
+  "mlm_probability": 0.15,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pred_num_layers": 2,
+  "pretrained_clip_name": "ViT-B/32",
+  "proj_num_layers": 2,
+  "temporal_attention_heads": 8,
+  "temporal_hidden_layers": 4,
+  "temporal_hidden_size": 512,
+  "type_vocab_size": 2,
+  "vocab_size": -1,
+  "weight_FAM": 0.05,
+  "weight_FTM": 0.45,
+  "weight_FTM_finetune": 0.15,
+  "weight_MLM": 0.05,
+  "weight_VTM": 0.45,
+  "weight_VTM_finetune": 0.85
+}
+
+2024-11-11 17:33:51,282:INFO: Weight doesn't exsits. /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base/cross_pytorch_model.bin
+2024-11-11 17:33:51,283:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 17:33:53,194:INFO: 	 embed_dim: 512
+2024-11-11 17:33:53,195:INFO: 	 image_resolution: 224
+2024-11-11 17:33:53,195:INFO: 	 vision_layers: 12
+2024-11-11 17:33:53,195:INFO: 	 vision_width: 768
+2024-11-11 17:33:53,195:INFO: 	 vision_patch_size: 32
+2024-11-11 17:33:53,195:INFO: 	 context_length: 77
+2024-11-11 17:33:53,195:INFO: 	 not used vocab_size: 49408
+2024-11-11 17:33:53,195:INFO: 	 transformer_width: 512
+2024-11-11 17:33:53,195:INFO: 	 transformer_heads: 8
+2024-11-11 17:33:53,195:INFO: 	 transformer_layers: 12
+2024-11-11 17:34:41,100:INFO: Effective parameters:
+2024-11-11 17:34:41,101:INFO:   <<< batch_size: 10
+2024-11-11 17:34:41,101:INFO:   <<< batch_size_val: 256
+2024-11-11 17:34:41,101:INFO:   <<< cache_dir: 
+2024-11-11 17:34:41,101:INFO:   <<< coef_lr: 0.001
+2024-11-11 17:34:41,101:INFO:   <<< cross_model: cross-base
+2024-11-11 17:34:41,101:INFO:   <<< dataset: vatex
+2024-11-11 17:34:41,101:INFO:   <<< do_eval: False
+2024-11-11 17:34:41,101:INFO:   <<< do_params: False
+2024-11-11 17:34:41,101:INFO:   <<< do_pretrain: False
+2024-11-11 17:34:41,101:INFO:   <<< do_train: True
+2024-11-11 17:34:41,101:INFO:   <<< enable_amp: False
+2024-11-11 17:34:41,101:INFO:   <<< epochs: 2
+2024-11-11 17:34:41,101:INFO:   <<< frame_sample: random
+2024-11-11 17:34:41,101:INFO:   <<< frame_sample_len: fix
+2024-11-11 17:34:41,101:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-11 17:34:41,101:INFO:   <<< init_model: /home/zhangyuxuan-23/baseline/VATEX/model_chinese/pytorch_model.bin
+2024-11-11 17:34:41,101:INFO:   <<< language: chinese
+2024-11-11 17:34:41,101:INFO:   <<< local_rank: 0
+2024-11-11 17:34:41,101:INFO:   <<< logdir: None
+2024-11-11 17:34:41,101:INFO:   <<< lr: 0.0001
+2024-11-11 17:34:41,101:INFO:   <<< lr_decay: 0.9
+2024-11-11 17:34:41,101:INFO:   <<< max_frames: 12
+2024-11-11 17:34:41,101:INFO:   <<< max_words: 32
+2024-11-11 17:34:41,101:INFO:   <<< n_display: 100
+2024-11-11 17:34:41,101:INFO:   <<< n_gpu: 1
+2024-11-11 17:34:41,102:INFO:   <<< num_thread_reader: 8
+2024-11-11 17:34:41,102:INFO:   <<< output_dir: ckpts/val
+2024-11-11 17:34:41,102:INFO:   <<< rank: 0
+2024-11-11 17:34:41,102:INFO:   <<< seed: 42
+2024-11-11 17:34:41,102:INFO:   <<< task: retrieval
+2024-11-11 17:34:41,102:INFO:   <<< text_lr: 1e-07
+2024-11-11 17:34:41,102:INFO:   <<< top_frames: 2
+2024-11-11 17:34:41,102:INFO:   <<< use_frame_fea: True
+2024-11-11 17:34:41,102:INFO:   <<< use_temp: True
+2024-11-11 17:34:41,102:INFO:   <<< warmup_proportion: 0.1
+2024-11-11 17:34:41,102:INFO:   <<< weight_decay: 0.2
+2024-11-11 17:34:41,102:INFO:   <<< world_size: 1
+2024-11-11 17:34:41,102:INFO: device: cuda:0 n_gpu: 1
+2024-11-11 17:34:41,662:INFO: loading archive file /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base
+2024-11-11 17:34:41,663:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "chinese_hidden_size": 768,
+  "co_attention_layers": 4,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 48,
+  "mlm_probability": 0.15,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pred_num_layers": 2,
+  "pretrained_clip_name": "ViT-B/32",
+  "proj_num_layers": 2,
+  "temporal_attention_heads": 8,
+  "temporal_hidden_layers": 4,
+  "temporal_hidden_size": 512,
+  "type_vocab_size": 2,
+  "vocab_size": -1,
+  "weight_FAM": 0.05,
+  "weight_FTM": 0.45,
+  "weight_FTM_finetune": 0.15,
+  "weight_MLM": 0.05,
+  "weight_VTM": 0.45,
+  "weight_VTM_finetune": 0.85
+}
+
+2024-11-11 17:34:41,663:INFO: Weight doesn't exsits. /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base/cross_pytorch_model.bin
+2024-11-11 17:34:41,664:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 17:34:43,536:INFO: 	 embed_dim: 512
+2024-11-11 17:34:43,537:INFO: 	 image_resolution: 224
+2024-11-11 17:34:43,537:INFO: 	 vision_layers: 12
+2024-11-11 17:34:43,537:INFO: 	 vision_width: 768
+2024-11-11 17:34:43,537:INFO: 	 vision_patch_size: 32
+2024-11-11 17:34:43,537:INFO: 	 context_length: 77
+2024-11-11 17:34:43,537:INFO: 	 not used vocab_size: 49408
+2024-11-11 17:34:43,537:INFO: 	 transformer_width: 512
+2024-11-11 17:34:43,537:INFO: 	 transformer_heads: 8
+2024-11-11 17:34:43,537:INFO: 	 transformer_layers: 12
+2024-11-11 17:34:45,650:INFO: name:/home/disk2/DATA/MSRVTT/hfl/chinese-roberta-wwm-ext,chinesebert_config:BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "directionality": "bidi",
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.6.1",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 21128
+}
+
+2024-11-11 17:34:47,349:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 17:34:49,185:INFO: 	 embed_dim: 512
+2024-11-11 17:34:49,185:INFO: 	 image_resolution: 224
+2024-11-11 17:34:49,186:INFO: 	 vision_layers: 12
+2024-11-11 17:34:49,186:INFO: 	 vision_width: 768
+2024-11-11 17:34:49,186:INFO: 	 vision_patch_size: 32
+2024-11-11 17:34:49,186:INFO: 	 context_length: 77
+2024-11-11 17:34:49,186:INFO: 	 not used vocab_size: 49408
+2024-11-11 17:34:49,186:INFO: 	 transformer_width: 512
+2024-11-11 17:34:49,186:INFO: 	 transformer_heads: 8
+2024-11-11 17:34:49,186:INFO: 	 transformer_layers: 12
+2024-11-11 17:34:51,413:INFO: --------------------
+2024-11-11 17:34:59,860:INFO: ***** Running test *****
+2024-11-11 17:34:59,861:INFO:   Num examples = 2
+2024-11-11 17:34:59,861:INFO:   Batch size = 256
+2024-11-11 17:34:59,861:INFO:   Num steps = 1
+2024-11-11 17:35:00,063:INFO: ***** Running training *****
+2024-11-11 17:35:00,063:INFO:   Num examples = 2940
+2024-11-11 17:35:00,063:INFO:   Batch size = 10
+2024-11-11 17:35:00,064:INFO:   Num steps = 588
+2024-11-11 17:35:11,996:INFO: data loader time:11.928159713745117
+2024-11-11 19:45:42,063:INFO: Effective parameters:
+2024-11-11 19:45:42,063:INFO:   <<< batch_size: 10
+2024-11-11 19:45:42,063:INFO:   <<< batch_size_val: 256
+2024-11-11 19:45:42,063:INFO:   <<< cache_dir: 
+2024-11-11 19:45:42,063:INFO:   <<< coef_lr: 0.001
+2024-11-11 19:45:42,063:INFO:   <<< cross_model: cross-base
+2024-11-11 19:45:42,063:INFO:   <<< dataset: vatex
+2024-11-11 19:45:42,063:INFO:   <<< do_eval: False
+2024-11-11 19:45:42,063:INFO:   <<< do_params: False
+2024-11-11 19:45:42,063:INFO:   <<< do_pretrain: False
+2024-11-11 19:45:42,063:INFO:   <<< do_train: True
+2024-11-11 19:45:42,063:INFO:   <<< enable_amp: False
+2024-11-11 19:45:42,063:INFO:   <<< epochs: 2
+2024-11-11 19:45:42,063:INFO:   <<< frame_sample: random
+2024-11-11 19:45:42,063:INFO:   <<< frame_sample_len: fix
+2024-11-11 19:45:42,063:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-11 19:45:42,063:INFO:   <<< init_model: /home/zhangyuxuan-23/baseline/VATEX/model_chinese/pytorch_model.bin
+2024-11-11 19:45:42,064:INFO:   <<< language: chinese
+2024-11-11 19:45:42,064:INFO:   <<< local_rank: 0
+2024-11-11 19:45:42,064:INFO:   <<< logdir: None
+2024-11-11 19:45:42,064:INFO:   <<< lr: 0.0001
+2024-11-11 19:45:42,064:INFO:   <<< lr_decay: 0.9
+2024-11-11 19:45:42,064:INFO:   <<< max_frames: 12
+2024-11-11 19:45:42,064:INFO:   <<< max_words: 32
+2024-11-11 19:45:42,064:INFO:   <<< n_display: 100
+2024-11-11 19:45:42,064:INFO:   <<< n_gpu: 1
+2024-11-11 19:45:42,064:INFO:   <<< num_thread_reader: 8
+2024-11-11 19:45:42,064:INFO:   <<< output_dir: ckpts/val
+2024-11-11 19:45:42,064:INFO:   <<< rank: 0
+2024-11-11 19:45:42,064:INFO:   <<< seed: 42
+2024-11-11 19:45:42,064:INFO:   <<< task: retrieval
+2024-11-11 19:45:42,064:INFO:   <<< text_lr: 1e-07
+2024-11-11 19:45:42,064:INFO:   <<< top_frames: 2
+2024-11-11 19:45:42,064:INFO:   <<< use_frame_fea: True
+2024-11-11 19:45:42,064:INFO:   <<< use_temp: True
+2024-11-11 19:45:42,064:INFO:   <<< warmup_proportion: 0.1
+2024-11-11 19:45:42,064:INFO:   <<< weight_decay: 0.2
+2024-11-11 19:45:42,064:INFO:   <<< world_size: 1
+2024-11-11 19:45:42,064:INFO: device: cuda:0 n_gpu: 1
+2024-11-11 19:45:42,565:INFO: loading archive file /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base
+2024-11-11 19:45:42,566:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "chinese_hidden_size": 768,
+  "co_attention_layers": 4,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 48,
+  "mlm_probability": 0.15,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pred_num_layers": 2,
+  "pretrained_clip_name": "ViT-B/32",
+  "proj_num_layers": 2,
+  "temporal_attention_heads": 8,
+  "temporal_hidden_layers": 4,
+  "temporal_hidden_size": 512,
+  "type_vocab_size": 2,
+  "vocab_size": -1,
+  "weight_FAM": 0.05,
+  "weight_FTM": 0.45,
+  "weight_FTM_finetune": 0.15,
+  "weight_MLM": 0.05,
+  "weight_VTM": 0.45,
+  "weight_VTM_finetune": 0.85
+}
+
+2024-11-11 19:45:42,566:INFO: Weight doesn't exsits. /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base/cross_pytorch_model.bin
+2024-11-11 19:45:42,567:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 19:45:44,333:INFO: 	 embed_dim: 512
+2024-11-11 19:45:44,334:INFO: 	 image_resolution: 224
+2024-11-11 19:45:44,334:INFO: 	 vision_layers: 12
+2024-11-11 19:45:44,334:INFO: 	 vision_width: 768
+2024-11-11 19:45:44,334:INFO: 	 vision_patch_size: 32
+2024-11-11 19:45:44,334:INFO: 	 context_length: 77
+2024-11-11 19:45:44,334:INFO: 	 not used vocab_size: 49408
+2024-11-11 19:45:44,334:INFO: 	 transformer_width: 512
+2024-11-11 19:45:44,334:INFO: 	 transformer_heads: 8
+2024-11-11 19:45:44,334:INFO: 	 transformer_layers: 12
+2024-11-11 19:45:46,380:INFO: name:/home/disk2/DATA/MSRVTT/hfl/chinese-roberta-wwm-ext,chinesebert_config:BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "directionality": "bidi",
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.6.1",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 21128
+}
+
+2024-11-11 19:45:47,976:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 19:45:49,694:INFO: 	 embed_dim: 512
+2024-11-11 19:45:49,695:INFO: 	 image_resolution: 224
+2024-11-11 19:45:49,695:INFO: 	 vision_layers: 12
+2024-11-11 19:45:49,695:INFO: 	 vision_width: 768
+2024-11-11 19:45:49,695:INFO: 	 vision_patch_size: 32
+2024-11-11 19:45:49,695:INFO: 	 context_length: 77
+2024-11-11 19:45:49,695:INFO: 	 not used vocab_size: 49408
+2024-11-11 19:45:49,695:INFO: 	 transformer_width: 512
+2024-11-11 19:45:49,695:INFO: 	 transformer_heads: 8
+2024-11-11 19:45:49,695:INFO: 	 transformer_layers: 12
+2024-11-11 19:45:51,748:INFO: --------------------
+2024-11-11 19:45:59,742:INFO: ***** Running test *****
+2024-11-11 19:45:59,742:INFO:   Num examples = 2
+2024-11-11 19:45:59,742:INFO:   Batch size = 256
+2024-11-11 19:45:59,742:INFO:   Num steps = 1
+2024-11-11 19:45:59,849:INFO: ***** Running training *****
+2024-11-11 19:45:59,849:INFO:   Num examples = 2940
+2024-11-11 19:45:59,849:INFO:   Batch size = 10
+2024-11-11 19:45:59,849:INFO:   Num steps = 588
+2024-11-11 19:46:08,423:INFO: data loader time:8.57155466079712
+2024-11-11 19:47:16,616:INFO: Effective parameters:
+2024-11-11 19:47:16,617:INFO:   <<< batch_size: 5
+2024-11-11 19:47:16,617:INFO:   <<< batch_size_val: 256
+2024-11-11 19:47:16,617:INFO:   <<< cache_dir: 
+2024-11-11 19:47:16,617:INFO:   <<< coef_lr: 0.001
+2024-11-11 19:47:16,617:INFO:   <<< cross_model: cross-base
+2024-11-11 19:47:16,617:INFO:   <<< dataset: vatex
+2024-11-11 19:47:16,617:INFO:   <<< do_eval: False
+2024-11-11 19:47:16,617:INFO:   <<< do_params: False
+2024-11-11 19:47:16,617:INFO:   <<< do_pretrain: False
+2024-11-11 19:47:16,617:INFO:   <<< do_train: True
+2024-11-11 19:47:16,617:INFO:   <<< enable_amp: False
+2024-11-11 19:47:16,617:INFO:   <<< epochs: 2
+2024-11-11 19:47:16,617:INFO:   <<< frame_sample: random
+2024-11-11 19:47:16,617:INFO:   <<< frame_sample_len: fix
+2024-11-11 19:47:16,617:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-11 19:47:16,617:INFO:   <<< init_model: /home/zhangyuxuan-23/baseline/VATEX/model_chinese/pytorch_model.bin
+2024-11-11 19:47:16,617:INFO:   <<< language: chinese
+2024-11-11 19:47:16,617:INFO:   <<< local_rank: 0
+2024-11-11 19:47:16,617:INFO:   <<< logdir: None
+2024-11-11 19:47:16,617:INFO:   <<< lr: 0.0001
+2024-11-11 19:47:16,617:INFO:   <<< lr_decay: 0.9
+2024-11-11 19:47:16,618:INFO:   <<< max_frames: 12
+2024-11-11 19:47:16,618:INFO:   <<< max_words: 32
+2024-11-11 19:47:16,618:INFO:   <<< n_display: 100
+2024-11-11 19:47:16,618:INFO:   <<< n_gpu: 1
+2024-11-11 19:47:16,618:INFO:   <<< num_thread_reader: 8
+2024-11-11 19:47:16,618:INFO:   <<< output_dir: ckpts/val
+2024-11-11 19:47:16,618:INFO:   <<< rank: 0
+2024-11-11 19:47:16,618:INFO:   <<< seed: 42
+2024-11-11 19:47:16,618:INFO:   <<< task: retrieval
+2024-11-11 19:47:16,618:INFO:   <<< text_lr: 1e-07
+2024-11-11 19:47:16,618:INFO:   <<< top_frames: 2
+2024-11-11 19:47:16,618:INFO:   <<< use_frame_fea: True
+2024-11-11 19:47:16,618:INFO:   <<< use_temp: True
+2024-11-11 19:47:16,618:INFO:   <<< warmup_proportion: 0.1
+2024-11-11 19:47:16,618:INFO:   <<< weight_decay: 0.2
+2024-11-11 19:47:16,618:INFO:   <<< world_size: 1
+2024-11-11 19:47:16,618:INFO: device: cuda:0 n_gpu: 1
+2024-11-11 19:47:17,118:INFO: loading archive file /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base
+2024-11-11 19:47:17,119:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "chinese_hidden_size": 768,
+  "co_attention_layers": 4,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 48,
+  "mlm_probability": 0.15,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pred_num_layers": 2,
+  "pretrained_clip_name": "ViT-B/32",
+  "proj_num_layers": 2,
+  "temporal_attention_heads": 8,
+  "temporal_hidden_layers": 4,
+  "temporal_hidden_size": 512,
+  "type_vocab_size": 2,
+  "vocab_size": -1,
+  "weight_FAM": 0.05,
+  "weight_FTM": 0.45,
+  "weight_FTM_finetune": 0.15,
+  "weight_MLM": 0.05,
+  "weight_VTM": 0.45,
+  "weight_VTM_finetune": 0.85
+}
+
+2024-11-11 19:47:17,119:INFO: Weight doesn't exsits. /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base/cross_pytorch_model.bin
+2024-11-11 19:47:17,119:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 19:47:18,922:INFO: 	 embed_dim: 512
+2024-11-11 19:47:18,922:INFO: 	 image_resolution: 224
+2024-11-11 19:47:18,922:INFO: 	 vision_layers: 12
+2024-11-11 19:47:18,922:INFO: 	 vision_width: 768
+2024-11-11 19:47:18,922:INFO: 	 vision_patch_size: 32
+2024-11-11 19:47:18,922:INFO: 	 context_length: 77
+2024-11-11 19:47:18,922:INFO: 	 not used vocab_size: 49408
+2024-11-11 19:47:18,922:INFO: 	 transformer_width: 512
+2024-11-11 19:47:18,922:INFO: 	 transformer_heads: 8
+2024-11-11 19:47:18,922:INFO: 	 transformer_layers: 12
+2024-11-11 19:47:21,185:INFO: name:/home/disk2/DATA/MSRVTT/hfl/chinese-roberta-wwm-ext,chinesebert_config:BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "directionality": "bidi",
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.6.1",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 21128
+}
+
+2024-11-11 19:47:22,804:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 19:47:24,528:INFO: 	 embed_dim: 512
+2024-11-11 19:47:24,529:INFO: 	 image_resolution: 224
+2024-11-11 19:47:24,529:INFO: 	 vision_layers: 12
+2024-11-11 19:47:24,529:INFO: 	 vision_width: 768
+2024-11-11 19:47:24,529:INFO: 	 vision_patch_size: 32
+2024-11-11 19:47:24,529:INFO: 	 context_length: 77
+2024-11-11 19:47:24,529:INFO: 	 not used vocab_size: 49408
+2024-11-11 19:47:24,529:INFO: 	 transformer_width: 512
+2024-11-11 19:47:24,529:INFO: 	 transformer_heads: 8
+2024-11-11 19:47:24,529:INFO: 	 transformer_layers: 12
+2024-11-11 19:47:26,612:INFO: --------------------
+2024-11-11 19:47:34,632:INFO: ***** Running test *****
+2024-11-11 19:47:34,632:INFO:   Num examples = 2
+2024-11-11 19:47:34,632:INFO:   Batch size = 256
+2024-11-11 19:47:34,632:INFO:   Num steps = 1
+2024-11-11 19:47:34,741:INFO: ***** Running training *****
+2024-11-11 19:47:34,741:INFO:   Num examples = 2940
+2024-11-11 19:47:34,741:INFO:   Batch size = 5
+2024-11-11 19:47:34,741:INFO:   Num steps = 1176
+2024-11-11 19:47:38,275:INFO: data loader time:3.5323383808135986
+2024-11-11 19:47:42,474:INFO: Reducer buckets have been rebuilt in this iteration.
+2024-11-11 19:48:30,510:INFO: Effective parameters:
+2024-11-11 19:48:30,511:INFO:   <<< batch_size: 1
+2024-11-11 19:48:30,511:INFO:   <<< batch_size_val: 256
+2024-11-11 19:48:30,511:INFO:   <<< cache_dir: 
+2024-11-11 19:48:30,511:INFO:   <<< coef_lr: 0.001
+2024-11-11 19:48:30,511:INFO:   <<< cross_model: cross-base
+2024-11-11 19:48:30,511:INFO:   <<< dataset: vatex
+2024-11-11 19:48:30,511:INFO:   <<< do_eval: False
+2024-11-11 19:48:30,511:INFO:   <<< do_params: False
+2024-11-11 19:48:30,511:INFO:   <<< do_pretrain: False
+2024-11-11 19:48:30,511:INFO:   <<< do_train: True
+2024-11-11 19:48:30,511:INFO:   <<< enable_amp: False
+2024-11-11 19:48:30,511:INFO:   <<< epochs: 2
+2024-11-11 19:48:30,511:INFO:   <<< frame_sample: random
+2024-11-11 19:48:30,511:INFO:   <<< frame_sample_len: fix
+2024-11-11 19:48:30,511:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-11 19:48:30,511:INFO:   <<< init_model: /home/zhangyuxuan-23/baseline/VATEX/model_chinese/pytorch_model.bin
+2024-11-11 19:48:30,511:INFO:   <<< language: chinese
+2024-11-11 19:48:30,511:INFO:   <<< local_rank: 0
+2024-11-11 19:48:30,511:INFO:   <<< logdir: None
+2024-11-11 19:48:30,511:INFO:   <<< lr: 0.0001
+2024-11-11 19:48:30,511:INFO:   <<< lr_decay: 0.9
+2024-11-11 19:48:30,511:INFO:   <<< max_frames: 12
+2024-11-11 19:48:30,512:INFO:   <<< max_words: 32
+2024-11-11 19:48:30,512:INFO:   <<< n_display: 100
+2024-11-11 19:48:30,512:INFO:   <<< n_gpu: 1
+2024-11-11 19:48:30,512:INFO:   <<< num_thread_reader: 8
+2024-11-11 19:48:30,512:INFO:   <<< output_dir: ckpts/val
+2024-11-11 19:48:30,512:INFO:   <<< rank: 0
+2024-11-11 19:48:30,512:INFO:   <<< seed: 42
+2024-11-11 19:48:30,512:INFO:   <<< task: retrieval
+2024-11-11 19:48:30,512:INFO:   <<< text_lr: 1e-07
+2024-11-11 19:48:30,512:INFO:   <<< top_frames: 2
+2024-11-11 19:48:30,512:INFO:   <<< use_frame_fea: True
+2024-11-11 19:48:30,512:INFO:   <<< use_temp: True
+2024-11-11 19:48:30,512:INFO:   <<< warmup_proportion: 0.1
+2024-11-11 19:48:30,512:INFO:   <<< weight_decay: 0.2
+2024-11-11 19:48:30,512:INFO:   <<< world_size: 1
+2024-11-11 19:48:30,512:INFO: device: cuda:0 n_gpu: 1
+2024-11-11 19:48:31,005:INFO: loading archive file /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base
+2024-11-11 19:48:31,006:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "chinese_hidden_size": 768,
+  "co_attention_layers": 4,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 48,
+  "mlm_probability": 0.15,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pred_num_layers": 2,
+  "pretrained_clip_name": "ViT-B/32",
+  "proj_num_layers": 2,
+  "temporal_attention_heads": 8,
+  "temporal_hidden_layers": 4,
+  "temporal_hidden_size": 512,
+  "type_vocab_size": 2,
+  "vocab_size": -1,
+  "weight_FAM": 0.05,
+  "weight_FTM": 0.45,
+  "weight_FTM_finetune": 0.15,
+  "weight_MLM": 0.05,
+  "weight_VTM": 0.45,
+  "weight_VTM_finetune": 0.85
+}
+
+2024-11-11 19:48:31,007:INFO: Weight doesn't exsits. /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base/cross_pytorch_model.bin
+2024-11-11 19:48:31,007:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 19:48:32,762:INFO: 	 embed_dim: 512
+2024-11-11 19:48:32,763:INFO: 	 image_resolution: 224
+2024-11-11 19:48:32,763:INFO: 	 vision_layers: 12
+2024-11-11 19:48:32,763:INFO: 	 vision_width: 768
+2024-11-11 19:48:32,763:INFO: 	 vision_patch_size: 32
+2024-11-11 19:48:32,763:INFO: 	 context_length: 77
+2024-11-11 19:48:32,763:INFO: 	 not used vocab_size: 49408
+2024-11-11 19:48:32,763:INFO: 	 transformer_width: 512
+2024-11-11 19:48:32,763:INFO: 	 transformer_heads: 8
+2024-11-11 19:48:32,763:INFO: 	 transformer_layers: 12
+2024-11-11 19:48:34,791:INFO: name:/home/disk2/DATA/MSRVTT/hfl/chinese-roberta-wwm-ext,chinesebert_config:BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "directionality": "bidi",
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.6.1",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 21128
+}
+
+2024-11-11 19:48:36,379:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 19:48:38,079:INFO: 	 embed_dim: 512
+2024-11-11 19:48:38,079:INFO: 	 image_resolution: 224
+2024-11-11 19:48:38,079:INFO: 	 vision_layers: 12
+2024-11-11 19:48:38,079:INFO: 	 vision_width: 768
+2024-11-11 19:48:38,079:INFO: 	 vision_patch_size: 32
+2024-11-11 19:48:38,079:INFO: 	 context_length: 77
+2024-11-11 19:48:38,079:INFO: 	 not used vocab_size: 49408
+2024-11-11 19:48:38,079:INFO: 	 transformer_width: 512
+2024-11-11 19:48:38,080:INFO: 	 transformer_heads: 8
+2024-11-11 19:48:38,080:INFO: 	 transformer_layers: 12
+2024-11-11 19:48:40,147:INFO: --------------------
+2024-11-11 19:48:48,272:INFO: ***** Running test *****
+2024-11-11 19:48:48,273:INFO:   Num examples = 2
+2024-11-11 19:48:48,273:INFO:   Batch size = 256
+2024-11-11 19:48:48,273:INFO:   Num steps = 1
+2024-11-11 19:48:48,380:INFO: ***** Running training *****
+2024-11-11 19:48:48,380:INFO:   Num examples = 2940
+2024-11-11 19:48:48,381:INFO:   Batch size = 1
+2024-11-11 19:48:48,381:INFO:   Num steps = 5880
+2024-11-11 19:48:50,002:INFO: data loader time:1.619837999343872
+2024-11-11 19:49:15,723:INFO: Effective parameters:
+2024-11-11 19:49:15,723:INFO:   <<< batch_size: 2
+2024-11-11 19:49:15,723:INFO:   <<< batch_size_val: 256
+2024-11-11 19:49:15,723:INFO:   <<< cache_dir: 
+2024-11-11 19:49:15,723:INFO:   <<< coef_lr: 0.001
+2024-11-11 19:49:15,723:INFO:   <<< cross_model: cross-base
+2024-11-11 19:49:15,724:INFO:   <<< dataset: vatex
+2024-11-11 19:49:15,724:INFO:   <<< do_eval: False
+2024-11-11 19:49:15,724:INFO:   <<< do_params: False
+2024-11-11 19:49:15,724:INFO:   <<< do_pretrain: False
+2024-11-11 19:49:15,724:INFO:   <<< do_train: True
+2024-11-11 19:49:15,724:INFO:   <<< enable_amp: False
+2024-11-11 19:49:15,724:INFO:   <<< epochs: 2
+2024-11-11 19:49:15,724:INFO:   <<< frame_sample: random
+2024-11-11 19:49:15,724:INFO:   <<< frame_sample_len: fix
+2024-11-11 19:49:15,724:INFO:   <<< gradient_accumulation_steps: 1
+2024-11-11 19:49:15,724:INFO:   <<< init_model: /home/zhangyuxuan-23/baseline/VATEX/model_chinese/pytorch_model.bin
+2024-11-11 19:49:15,724:INFO:   <<< language: chinese
+2024-11-11 19:49:15,724:INFO:   <<< local_rank: 0
+2024-11-11 19:49:15,724:INFO:   <<< logdir: None
+2024-11-11 19:49:15,725:INFO:   <<< lr: 0.0001
+2024-11-11 19:49:15,725:INFO:   <<< lr_decay: 0.9
+2024-11-11 19:49:15,725:INFO:   <<< max_frames: 12
+2024-11-11 19:49:15,725:INFO:   <<< max_words: 32
+2024-11-11 19:49:15,725:INFO:   <<< n_display: 100
+2024-11-11 19:49:15,725:INFO:   <<< n_gpu: 1
+2024-11-11 19:49:15,725:INFO:   <<< num_thread_reader: 8
+2024-11-11 19:49:15,725:INFO:   <<< output_dir: ckpts/val
+2024-11-11 19:49:15,725:INFO:   <<< rank: 0
+2024-11-11 19:49:15,725:INFO:   <<< seed: 42
+2024-11-11 19:49:15,725:INFO:   <<< task: retrieval
+2024-11-11 19:49:15,725:INFO:   <<< text_lr: 1e-07
+2024-11-11 19:49:15,725:INFO:   <<< top_frames: 2
+2024-11-11 19:49:15,725:INFO:   <<< use_frame_fea: True
+2024-11-11 19:49:15,725:INFO:   <<< use_temp: True
+2024-11-11 19:49:15,726:INFO:   <<< warmup_proportion: 0.1
+2024-11-11 19:49:15,726:INFO:   <<< weight_decay: 0.2
+2024-11-11 19:49:15,726:INFO:   <<< world_size: 1
+2024-11-11 19:49:15,726:INFO: device: cuda:0 n_gpu: 1
+2024-11-11 19:49:16,231:INFO: loading archive file /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base
+2024-11-11 19:49:16,232:INFO: Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "chinese_hidden_size": 768,
+  "co_attention_layers": 4,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 48,
+  "mlm_probability": 0.15,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pred_num_layers": 2,
+  "pretrained_clip_name": "ViT-B/32",
+  "proj_num_layers": 2,
+  "temporal_attention_heads": 8,
+  "temporal_hidden_layers": 4,
+  "temporal_hidden_size": 512,
+  "type_vocab_size": 2,
+  "vocab_size": -1,
+  "weight_FAM": 0.05,
+  "weight_FTM": 0.45,
+  "weight_FTM_finetune": 0.15,
+  "weight_MLM": 0.05,
+  "weight_VTM": 0.45,
+  "weight_VTM_finetune": 0.85
+}
+
+2024-11-11 19:49:16,232:INFO: Weight doesn't exsits. /home/zhangyuxuan-23/baseline/HMMC/modules/cross-base/cross_pytorch_model.bin
+2024-11-11 19:49:16,232:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 19:49:17,993:INFO: 	 embed_dim: 512
+2024-11-11 19:49:17,993:INFO: 	 image_resolution: 224
+2024-11-11 19:49:17,994:INFO: 	 vision_layers: 12
+2024-11-11 19:49:17,994:INFO: 	 vision_width: 768
+2024-11-11 19:49:17,994:INFO: 	 vision_patch_size: 32
+2024-11-11 19:49:17,994:INFO: 	 context_length: 77
+2024-11-11 19:49:17,994:INFO: 	 not used vocab_size: 49408
+2024-11-11 19:49:17,994:INFO: 	 transformer_width: 512
+2024-11-11 19:49:17,994:INFO: 	 transformer_heads: 8
+2024-11-11 19:49:17,994:INFO: 	 transformer_layers: 12
+2024-11-11 19:49:20,029:INFO: name:/home/disk2/DATA/MSRVTT/hfl/chinese-roberta-wwm-ext,chinesebert_config:BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "directionality": "bidi",
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.6.1",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 21128
+}
+
+2024-11-11 19:49:21,630:INFO: pretrained_clip_name:ViT-B/32
+2024-11-11 19:49:23,336:INFO: 	 embed_dim: 512
+2024-11-11 19:49:23,337:INFO: 	 image_resolution: 224
+2024-11-11 19:49:23,337:INFO: 	 vision_layers: 12
+2024-11-11 19:49:23,337:INFO: 	 vision_width: 768
+2024-11-11 19:49:23,337:INFO: 	 vision_patch_size: 32
+2024-11-11 19:49:23,337:INFO: 	 context_length: 77
+2024-11-11 19:49:23,337:INFO: 	 not used vocab_size: 49408
+2024-11-11 19:49:23,337:INFO: 	 transformer_width: 512
+2024-11-11 19:49:23,337:INFO: 	 transformer_heads: 8
+2024-11-11 19:49:23,337:INFO: 	 transformer_layers: 12
+2024-11-11 19:49:25,357:INFO: --------------------
+2024-11-11 19:49:33,573:INFO: ***** Running test *****
+2024-11-11 19:49:33,573:INFO:   Num examples = 2
+2024-11-11 19:49:33,573:INFO:   Batch size = 256
+2024-11-11 19:49:33,573:INFO:   Num steps = 1
+2024-11-11 19:49:33,692:INFO: ***** Running training *****
+2024-11-11 19:49:33,693:INFO:   Num examples = 2940
+2024-11-11 19:49:33,693:INFO:   Batch size = 2
+2024-11-11 19:49:33,693:INFO:   Num steps = 2940
+2024-11-11 19:49:36,201:INFO: data loader time:2.5068087577819824
+2024-11-11 19:49:36,909:INFO: Reducer buckets have been rebuilt in this iteration.

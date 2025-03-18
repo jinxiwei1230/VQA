@@ -1,0 +1,133 @@
+{
+    "run": {
+        "task": "videoqa",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 3e-05,
+        "min_lr": 0,
+        "warmup_lr": 1e-08,
+        "warmup_steps": 1000,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 8,
+        "batch_size_eval": 8,
+        "num_workers": 8,
+        "accum_grad_iters": 2,
+        "max_len": 30,
+        "min_len": 8,
+        "num_beams": 5,
+        "seed": 42,
+        "output_dir": "results/nextqa_ft",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "valid_splits": [
+            "val"
+        ],
+        "test_splits": [
+            "val"
+        ],
+        "device": "cuda",
+        "world_size": 1,
+        "dist_url": "env://",
+        "distributed": true,
+        "find_unused_parameters": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "sevila",
+        "load_finetuned": true,
+        "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+        "finetuned": "sevila_checkpoints/sevila_pretrained.pth",
+        "image_size": 224,
+        "drop_path_rate": 0,
+        "use_grad_checkpoint": false,
+        "vit_precision": "fp16",
+        "freeze_vit": true,
+        "num_query_token": 32,
+        "t5_model": "google/flan-t5-xl",
+        "prompt": "",
+        "model_type": "pretrain_flant5xl",
+        "frame_num": 4,
+        "answer_num": 5,
+        "task": "qvh_freeze_loc_train_qa_with_loc_train_qa_vid"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "blip_image_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "blip_image_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "blip_caption"
+            },
+            "eval": {
+                "name": "blip_caption"
+            }
+        }
+    },
+    "datasets": {
+        "nextqa": {
+            "data_type": "videos",
+            "build_info": {
+                "annotations": {
+                    "train": {
+                        "url": "/root/autodl-tmp/VQA/NExT-QA/qa_annos/train.json",
+                        "storage": "/root/autodl-tmp/VQA/NExT-QA/qa_annos/train.json"
+                    },
+                    "val": {
+                        "url": "/root/autodl-tmp/VQA/NExT-QA/qa_annos/val.json",
+                        "storage": "/root/autodl-tmp/VQA/NExT-QA/qa_annos/val.json"
+                    },
+                    "test": {
+                        "url": "/root/autodl-tmp/VQA/NExT-QA/qa_annos/val.json",
+                        "storage": "/root/autodl-tmp/VQA/NExT-QA/qa_annos/val.json"
+                    }
+                },
+                "videos": {
+                    "storage": "/root/autodl-tmp/VQA/NExT-QA/NExTVideo"
+                }
+            },
+            "vis_processor": {
+                "train": {
+                    "name": "blip2_video_train",
+                    "n_frms": 32,
+                    "image_size": 224
+                },
+                "eval": {
+                    "name": "blip_video_eval",
+                    "n_frms": 32,
+                    "image_size": 224
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "blip_question",
+                    "max_words": 50
+                },
+                "eval": {
+                    "name": "blip_question",
+                    "max_words": 50
+                }
+            }
+        }
+    }
+}
+{"train_lr": "0.000", "train_loss": "0.323"}
+{"val_agg_metrics": 0.7201761409127302, "val_total": 4996, "val_CH": 68.66764275256223, "val_CW": 72.81704781704782, "val_TN": 64.35754189944134, "val_TC": 72.09653092006033, "val_DL": 92.88135593220339, "val_DC": 63.84180790960452, "val_DO": 82.95081967213115, "val_TP": 62.96296296296296, "val_best_epoch": 0}
+{"train_lr": "0.000", "train_loss": "0.286"}
+{"val_agg_metrics": 0.7183746997598078, "val_total": 4996, "val_CH": 70.13177159590043, "val_CW": 71.62162162162163, "val_TN": 63.57541899441341, "val_TC": 73.90648567119156, "val_DL": 92.88135593220339, "val_DC": 63.84180790960452, "val_DO": 81.63934426229508, "val_TP": 68.51851851851852, "val_best_epoch": 0}
+{"train_lr": "0.000", "train_loss": "0.272"}
+{"val_agg_metrics": 0.7147718174539631, "val_total": 4996, "val_CH": 69.25329428989751, "val_CW": 72.55717255717255, "val_TN": 63.46368715083799, "val_TC": 72.09653092006033, "val_DL": 92.54237288135593, "val_DC": 56.49717514124294, "val_DO": 81.31147540983606, "val_TP": 64.81481481481481, "val_best_epoch": 0}
+{"train_lr": "0.000", "train_loss": "0.255"}
+{"val_agg_metrics": 0.7165732586068855, "val_total": 4996, "val_CH": 68.08199121522695, "val_CW": 73.07692307692307, "val_TN": 62.3463687150838, "val_TC": 71.49321266968326, "val_DL": 91.52542372881356, "val_DC": 65.5367231638418, "val_DO": 84.26229508196721, "val_TP": 62.96296296296296, "val_best_epoch": 0}

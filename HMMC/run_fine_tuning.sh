@@ -1,0 +1,2 @@
+python -m torch.distributed.run --nproc_per_node=1 --master_port 11000 main_task_retrieval.py --do_train --num_thread_reader=8 --epochs=2 --batch_size=2 --n_display=100 --output_dir ckpts/val --top_frames 2 --max_frames 12 --frame_sample random  --use_temp --use_frame_fea --lr 1e-4 --text_lr 1e-7 --coef_lr 1e-3 --batch_size_val 256  --task retrieval --dataset vatex --language chinese --init_model /home/zhangyuxuan-23/baseline/VATEX/model_chinese/pytorch_model.bin
+

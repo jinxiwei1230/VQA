@@ -1,0 +1,280 @@
+从目录结构来看，lavis 项目包含以下主要部分：
+
+common：包含常用的工具、配置、日志记录、优化器等。
+configs：配置文件目录，包括数据集配置、模型配置和默认配置。
+datasets：数据集相关的构建器和处理工具。
+models：模型定义和实现，包括各种深度学习模型的实现。
+processors：处理器和转换器，可能用于图像处理、文本处理等。
+projects：预训练模型项目的配置文件，包括模型和数据集配置。
+runners：运行时工具，可能用于训练和评估模型。
+tasks：任务定义文件，如图像标注、对话生成、检索等。
+lavis
+├─ __init__.py
+├─ common
+│    ├─ annotator
+│    │    ├─ canny
+│    │    ├─ ckpts
+│    │    ├─ hed
+│    │    ├─ midas
+│    │    ├─ mlsd
+│    │    ├─ openpose
+│    │    ├─ uniformer
+│    │    └─ util.py
+│    ├─ config.py               配置类
+│    ├─ dist_utils.py
+│    ├─ gradcam.py
+│    ├─ logger.py
+│    ├─ optims.py
+│    ├─ registry.py
+│    ├─ utils.py
+│    └─ vqa_tools
+│           ├─ __init__.py
+│           ├─ vqa.py
+│           └─ vqa_eval.py
+├─ configs
+│    ├─ datasets
+│    │    ├─ aokvqa
+│    │    ├─ avsd
+│    │    ├─ blip_diffusion_datasets
+│    │    ├─ coco
+│    │    ├─ conceptual_caption
+│    │    ├─ didemo
+│    │    ├─ flickr30k
+│    │    ├─ gqa
+│    │    ├─ imagenet
+│    │    ├─ laion
+│    │    ├─ msrvtt
+│    │    ├─ msvd
+│    │    ├─ nlvr
+│    │    ├─ nocaps
+│    │    ├─ okvqa
+│    │    ├─ sbu_caption
+│    │    ├─ snli_ve
+│    │    ├─ vatex
+│    │    └─ vg
+│    ├─ default.yaml    预训练模型存储路径
+│    └─ models
+│           ├─ albef_classification_ve.yaml
+│           ├─ albef_feature_extractor.yaml
+│           ├─ albef_nlvr.yaml
+│           ├─ albef_pretrain_base.yaml
+│           ├─ albef_retrieval_coco.yaml
+│           ├─ albef_retrieval_flickr.yaml
+│           ├─ albef_vqav2.yaml
+│           ├─ alpro_qa_msrvtt.yaml
+│           ├─ alpro_qa_msvd.yaml
+│           ├─ alpro_retrieval_didemo.yaml
+│           ├─ alpro_retrieval_msrvtt.yaml
+│           ├─ bert_config.json
+│           ├─ bert_config_alpro.json
+│           ├─ blip-diffusion
+│           ├─ blip2
+│           ├─ blip_caption_base_coco.yaml
+│           ├─ blip_caption_large_coco.yaml
+│           ├─ blip_classification_base.yaml
+│           ├─ blip_feature_extractor_base.yaml
+│           ├─ blip_itm_base.yaml
+│           ├─ blip_itm_large.yaml
+│           ├─ blip_nlvr.yaml
+│           ├─ blip_pretrain_base.yaml
+│           ├─ blip_pretrain_large.yaml
+│           ├─ blip_retrieval_coco.yaml
+│           ├─ blip_retrieval_flickr.yaml
+│           ├─ blip_vqa_aokvqa.yaml
+│           ├─ blip_vqa_okvqa.yaml
+│           ├─ blip_vqav2.yaml
+│           ├─ clip
+│           ├─ clip_resnet50.yaml
+│           ├─ clip_vit_base16.yaml
+│           ├─ clip_vit_base32.yaml
+│           ├─ clip_vit_large14.yaml
+│           ├─ clip_vit_large14_336.yaml
+│           ├─ gpt_dialogue_base.yaml
+│           ├─ img2prompt-vqa
+│           ├─ med_config.json
+│           ├─ med_config_albef.json
+│           ├─ med_large_config.json
+│           └─ pnp-vqa
+├─ datasets
+│    ├─ builders
+│    │    ├─ __init__.py
+│    │    ├─ base_dataset_builder.py
+│    │    ├─ caption_builder.py
+│    │    ├─ classification_builder.py
+│    │    ├─ dialogue_builder.py
+│    │    ├─ image_text_pair_builder.py
+│    │    ├─ imagefolder_builder.py
+│    │    ├─ retrieval_builder.py
+│    │    ├─ text_to_image_generation_builder.py
+│    │    ├─ video_qa_builder.py
+│    │    └─ vqa_builder.py
+│    ├─ data_utils.py
+│    ├─ datasets
+│    │    ├─ aok_vqa_datasets.py
+│    │    ├─ avsd_dialogue_datasets.py
+│    │    ├─ base_dataset.py
+│    │    ├─ caption_datasets.py
+│    │    ├─ coco_caption_datasets.py
+│    │    ├─ coco_vqa_datasets.py
+│    │    ├─ dataloader_utils.py
+│    │    ├─ dialogue_datasets.py
+│    │    ├─ gqa_datasets.py
+│    │    ├─ image_text_pair_datasets.py
+│    │    ├─ imagefolder_dataset.py
+│    │    ├─ laion_dataset.py
+│    │    ├─ multimodal_classification_datasets.py
+│    │    ├─ nlvr_datasets.py
+│    │    ├─ retrieval_datasets.py
+│    │    ├─ snli_ve_datasets.py
+│    │    ├─ subject_driven_t2i_dataset.py
+│    │    ├─ vg_vqa_datasets.py
+│    │    ├─ video_caption_datasets.py
+│    │    ├─ video_vqa_datasets.py
+│    │    └─ vqa_datasets.py
+│    └─ download_scripts
+│           ├─ DownloadConceptualCaptions
+│           ├─ download_coco.py
+│           ├─ download_didemo.py
+│           ├─ download_flickr.py
+│           ├─ download_gqa.py
+│           ├─ download_msrvtt.py
+│           ├─ download_msvd.py
+│           ├─ download_nocaps.py
+│           ├─ download_sbu.py
+│           └─ download_vg.py
+├─ models
+│    ├─ __init__.py
+│    ├─ albef_models
+│    │    ├─ __init__.py
+│    │    ├─ albef_classification.py
+│    │    ├─ albef_feature_extractor.py
+│    │    ├─ albef_nlvr.py
+│    │    ├─ albef_outputs.py
+│    │    ├─ albef_pretrain.py
+│    │    ├─ albef_retrieval.py
+│    │    └─ albef_vqa.py
+│    ├─ alpro_models
+│    │    ├─ __init__.py
+│    │    ├─ alpro_outputs.py
+│    │    ├─ alpro_qa.py
+│    │    └─ alpro_retrieval.py
+│    ├─ base_model.py
+│    ├─ blip2_models
+│    │    ├─ Qformer.py
+│    │    ├─ __init__.py
+│    │    ├─ blip2.py
+│    │    ├─ blip2_image_text_matching.py
+│    │    ├─ blip2_opt.py
+│    │    ├─ blip2_qformer.py
+│    │    ├─ blip2_t5.py
+│    │    ├─ blip2_t5_instruct.py
+│    │    ├─ blip2_vicuna_instruct.py
+│    │    ├─ modeling_llama.py
+│    │    ├─ modeling_opt.py
+│    │    └─ modeling_t5.py
+│    ├─ blip_diffusion_models
+│    │    ├─ __init__.py
+│    │    ├─ blip_diffusion.py
+│    │    ├─ modeling_ctx_clip.py
+│    │    ├─ ptp_utils.py
+│    │    └─ utils.py
+│    ├─ blip_models
+│    │    ├─ __init__.py
+│    │    ├─ blip.py
+│    │    ├─ blip_caption.py
+│    │    ├─ blip_classification.py
+│    │    ├─ blip_feature_extractor.py
+│    │    ├─ blip_image_text_matching.py
+│    │    ├─ blip_nlvr.py
+│    │    ├─ blip_outputs.py
+│    │    ├─ blip_pretrain.py
+│    │    ├─ blip_retrieval.py
+│    │    ├─ blip_vqa.py
+│    │    └─ nlvr_encoder.py
+│    ├─ clip_models
+│    │    ├─ __init__.py
+│    │    ├─ bpe_simple_vocab_16e6.txt.gz
+│    │    ├─ clip_outputs.py
+│    │    ├─ loss.py
+│    │    ├─ model.py
+│    │    ├─ pics
+│    │    ├─ pretrained.py
+│    │    ├─ timm_model.py
+│    │    ├─ tokenizer.py
+│    │    ├─ transform.py
+│    │    └─ utils.py
+│    ├─ clip_vit.py
+│    ├─ eva_vit.py
+│    ├─ gpt_models
+│    │    └─ gpt_dialogue.py
+│    ├─ img2prompt_models
+│    │    ├─ __init__.py
+│    │    └─ img2prompt_vqa.py
+│    ├─ med.py
+│    ├─ pnp_vqa_models
+│    │    ├─ __init__.py
+│    │    ├─ pnp_unifiedqav2_fid.py
+│    │    └─ pnp_vqa.py
+│    ├─ timesformer
+│    │    ├─ __init__.py
+│    │    ├─ conv2d_same.py
+│    │    ├─ features.py
+│    │    ├─ helpers.py
+│    │    ├─ linear.py
+│    │    ├─ vit.py
+│    │    └─ vit_utils.py
+│    └─ vit.py
+├─ processors
+│    ├─ __init__.py
+│    ├─ alpro_processors.py
+│    ├─ base_processor.py
+│    ├─ blip_diffusion_processors.py
+│    ├─ blip_processors.py
+│    ├─ clip_processors.py
+│    ├─ functional_video.py
+│    ├─ gpt_processors.py
+│    ├─ randaugment.py
+│    └─ transforms_video.py
+├─ projects         预训练模型项目配置文件（model, datasets, run）
+│    ├─ albef
+│    │    ├─ eval
+│    │    └─ train
+│    ├─ alpro
+│    │    ├─ eval
+│    │    └─ train
+│    ├─ blip
+│    │    ├─ coco_cap_ft_iter.yaml
+│    │    ├─ eval
+│    │    └─ train
+│    ├─ blip2
+│    │    ├─ eval
+│    │    └─ train
+│    ├─ blip_diffusion
+│    │    ├─ finetune-db-dog.yaml
+│    │    ├─ finetune-db-pink-dress.yaml
+│    │    ├─ finetune-db-shein-jacket.yaml
+│    │    └─ finetune-db-template.yaml
+│    ├─ clip
+│    │    ├─ exp_coco_ret_eval.yaml
+│    │    ├─ exp_flickr_ret_eval.yaml
+│    │    └─ exp_imnet_zs_eval.yaml
+│    ├─ gpt
+│    │    ├─ eval
+│    │    └─ train
+│    └─ pnp-vqa
+│           └─ eval
+├─ runners
+│    ├─ __init__.py
+│    ├─ runner_base.py
+│    └─ runner_iter.py
+└─ tasks
+       ├─ __init__.py
+       ├─ base_task.py
+       ├─ captioning.py
+       ├─ dialogue.py
+       ├─ image_text_pretrain.py
+       ├─ multimodal_classification.py
+       ├─ retrieval.py
+       ├─ text_to_image_generation.py
+       ├─ vqa.py
+       └─ vqa_reading_comprehension.py

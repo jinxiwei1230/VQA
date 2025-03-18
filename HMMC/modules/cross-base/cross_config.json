@@ -1,0 +1,18 @@
+{
+  "max_position_embeddings": 48,
+  "chinese_hidden_size": 768,
+  "temporal_hidden_size": 512,
+  "temporal_attention_heads": 8,
+  "temporal_hidden_layers": 4,
+  "mlm_probability": 0.15,
+  "co_attention_layers": 4,
+  "proj_num_layers": 2,
+  "pred_num_layers": 2,
+  "weight_FAM": 0.05,
+  "weight_VTM": 0.45,
+  "weight_FTM": 0.45,
+  "weight_MLM": 0.05,
+  "weight_VTM_finetune": 0.85,
+  "weight_FTM_finetune": 0.15,
+  "pretrained_clip_name": "ViT-B/32"
+}

@@ -1,0 +1,2377 @@
+{
+    "run": {
+        "task": "videoqa",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 3e-05,
+        "min_lr": 0,
+        "warmup_lr": 1e-08,
+        "warmup_steps": 1000,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 4,
+        "batch_size_eval": 4,
+        "num_workers": 8,
+        "accum_grad_iters": 4,
+        "max_len": 30,
+        "min_len": 8,
+        "num_beams": 5,
+        "seed": 42,
+        "output_dir": "results/nextqa_ft",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "valid_splits": [
+            "val"
+        ],
+        "test_splits": [
+            "val"
+        ],
+        "device": "cuda",
+        "world_size": 2,
+        "dist_url": "env://",
+        "distributed": true,
+        "find_unused_parameters": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "sevila",
+        "load_finetuned": true,
+        "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+        "finetuned": "sevila_checkpoints/sevila_pretrained.pth",
+        "image_size": 224,
+        "drop_path_rate": 0,
+        "use_grad_checkpoint": false,
+        "vit_precision": "fp16",
+        "freeze_vit": true,
+        "num_query_token": 32,
+        "t5_model": "google/flan-t5-xl",
+        "prompt": "",
+        "model_type": "pretrain_flant5xl",
+        "frame_num": 4,
+        "answer_num": 5,
+        "task": "qvh_freeze_loc_train_qa_with_loc_train_qa_vid"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "blip_image_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "blip_image_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "blip_caption"
+            },
+            "eval": {
+                "name": "blip_caption"
+            }
+        }
+    },
+    "datasets": {
+        "nextqa": {
+            "data_type": "videos",
+            "build_info": {
+                "annotations": {
+                    "train": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json"
+                    },
+                    "val": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    },
+                    "test": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    }
+                },
+                "videos": {
+                    "storage": "/home/data/Videos/NExTVideo/"
+                }
+            },
+            "vis_processor": {
+                "train": {
+                    "name": "blip2_video_train",
+                    "n_frms": 32,
+                    "image_size": 224
+                },
+                "eval": {
+                    "name": "blip_video_eval",
+                    "n_frms": 32,
+                    "image_size": 224
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "blip_question",
+                    "max_words": 50
+                },
+                "eval": {
+                    "name": "blip_question",
+                    "max_words": 50
+                }
+            }
+        }
+    }
+}
+{
+    "run": {
+        "task": "videoqa",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 3e-05,
+        "min_lr": 0,
+        "warmup_lr": 1e-08,
+        "warmup_steps": 1000,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 4,
+        "batch_size_eval": 4,
+        "num_workers": 8,
+        "accum_grad_iters": 4,
+        "max_len": 30,
+        "min_len": 8,
+        "num_beams": 5,
+        "seed": 42,
+        "output_dir": "results/nextqa_ft",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "valid_splits": [
+            "val"
+        ],
+        "test_splits": [
+            "val"
+        ],
+        "device": "cuda",
+        "world_size": 1,
+        "dist_url": "env://",
+        "distributed": true,
+        "find_unused_parameters": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "sevila",
+        "load_finetuned": true,
+        "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+        "finetuned": "sevila_checkpoints/sevila_pretrained.pth",
+        "image_size": 224,
+        "drop_path_rate": 0,
+        "use_grad_checkpoint": false,
+        "vit_precision": "fp16",
+        "freeze_vit": true,
+        "num_query_token": 32,
+        "t5_model": "google/flan-t5-xl",
+        "prompt": "",
+        "model_type": "pretrain_flant5xl",
+        "frame_num": 4,
+        "answer_num": 5,
+        "task": "qvh_freeze_loc_train_qa_with_loc_train_qa_vid"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "blip_image_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "blip_image_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "blip_caption"
+            },
+            "eval": {
+                "name": "blip_caption"
+            }
+        }
+    },
+    "datasets": {
+        "nextqa": {
+            "data_type": "videos",
+            "build_info": {
+                "annotations": {
+                    "train": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json"
+                    },
+                    "val": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    },
+                    "test": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    }
+                },
+                "videos": {
+                    "storage": "/home/data/Videos/NExTVideo/"
+                }
+            },
+            "vis_processor": {
+                "train": {
+                    "name": "blip2_video_train",
+                    "n_frms": 32,
+                    "image_size": 224
+                },
+                "eval": {
+                    "name": "blip_video_eval",
+                    "n_frms": 32,
+                    "image_size": 224
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "blip_question",
+                    "max_words": 50
+                },
+                "eval": {
+                    "name": "blip_question",
+                    "max_words": 50
+                }
+            }
+        }
+    }
+}
+{
+    "run": {
+        "task": "videoqa",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 3e-05,
+        "min_lr": 0,
+        "warmup_lr": 1e-08,
+        "warmup_steps": 1000,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 8,
+        "batch_size_eval": 8,
+        "num_workers": 8,
+        "accum_grad_iters": 2,
+        "max_len": 30,
+        "min_len": 8,
+        "num_beams": 5,
+        "seed": 42,
+        "output_dir": "results/nextqa_ft",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "valid_splits": [
+            "val"
+        ],
+        "test_splits": [
+            "val"
+        ],
+        "device": "cuda",
+        "world_size": 1,
+        "dist_url": "env://",
+        "distributed": true,
+        "find_unused_parameters": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "sevila",
+        "load_finetuned": true,
+        "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+        "finetuned": "sevila_checkpoints/sevila_pretrained.pth",
+        "image_size": 224,
+        "drop_path_rate": 0,
+        "use_grad_checkpoint": false,
+        "vit_precision": "fp16",
+        "freeze_vit": true,
+        "num_query_token": 32,
+        "t5_model": "google/flan-t5-xl",
+        "prompt": "",
+        "model_type": "pretrain_flant5xl",
+        "frame_num": 4,
+        "answer_num": 5,
+        "task": "qvh_freeze_loc_train_qa_with_loc_train_qa_vid"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "blip_image_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "blip_image_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "blip_caption"
+            },
+            "eval": {
+                "name": "blip_caption"
+            }
+        }
+    },
+    "datasets": {
+        "nextqa": {
+            "data_type": "videos",
+            "build_info": {
+                "annotations": {
+                    "train": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json"
+                    },
+                    "val": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    },
+                    "test": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    }
+                },
+                "videos": {
+                    "storage": "/home/data/Videos/NExTVideo/"
+                }
+            },
+            "vis_processor": {
+                "train": {
+                    "name": "blip2_video_train",
+                    "n_frms": 32,
+                    "image_size": 224
+                },
+                "eval": {
+                    "name": "blip_video_eval",
+                    "n_frms": 32,
+                    "image_size": 224
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "blip_question",
+                    "max_words": 50
+                },
+                "eval": {
+                    "name": "blip_question",
+                    "max_words": 50
+                }
+            }
+        }
+    }
+}
+{
+    "run": {
+        "task": "videoqa",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 3e-05,
+        "min_lr": 0,
+        "warmup_lr": 1e-08,
+        "warmup_steps": 1000,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 4,
+        "batch_size_eval": 4,
+        "num_workers": 8,
+        "accum_grad_iters": 4,
+        "max_len": 30,
+        "min_len": 8,
+        "num_beams": 5,
+        "seed": 42,
+        "output_dir": "results/nextqa_ft",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "valid_splits": [
+            "val"
+        ],
+        "test_splits": [
+            "val"
+        ],
+        "device": "cuda",
+        "world_size": 1,
+        "dist_url": "env://",
+        "distributed": true,
+        "find_unused_parameters": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "sevila",
+        "load_finetuned": true,
+        "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+        "finetuned": "sevila_checkpoints/sevila_pretrained.pth",
+        "image_size": 224,
+        "drop_path_rate": 0,
+        "use_grad_checkpoint": false,
+        "vit_precision": "fp16",
+        "freeze_vit": true,
+        "num_query_token": 32,
+        "t5_model": "google/flan-t5-xl",
+        "prompt": "",
+        "model_type": "pretrain_flant5xl",
+        "frame_num": 4,
+        "answer_num": 5,
+        "task": "qvh_freeze_loc_train_qa_with_loc_train_qa_vid"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "blip_image_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "blip_image_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "blip_caption"
+            },
+            "eval": {
+                "name": "blip_caption"
+            }
+        }
+    },
+    "datasets": {
+        "nextqa": {
+            "data_type": "videos",
+            "build_info": {
+                "annotations": {
+                    "train": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json"
+                    },
+                    "val": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    },
+                    "test": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    }
+                },
+                "videos": {
+                    "storage": "/home/data/Videos/NExTVideo/"
+                }
+            },
+            "vis_processor": {
+                "train": {
+                    "name": "blip2_video_train",
+                    "n_frms": 32,
+                    "image_size": 224
+                },
+                "eval": {
+                    "name": "blip_video_eval",
+                    "n_frms": 32,
+                    "image_size": 224
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "blip_question",
+                    "max_words": 50
+                },
+                "eval": {
+                    "name": "blip_question",
+                    "max_words": 50
+                }
+            }
+        }
+    }
+}
+{
+    "run": {
+        "task": "videoqa",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 3e-05,
+        "min_lr": 0,
+        "warmup_lr": 1e-08,
+        "warmup_steps": 1000,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 4,
+        "batch_size_eval": 4,
+        "num_workers": 8,
+        "accum_grad_iters": 4,
+        "max_len": 30,
+        "min_len": 8,
+        "num_beams": 5,
+        "seed": 42,
+        "output_dir": "results/nextqa_ft",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "valid_splits": [
+            "val"
+        ],
+        "test_splits": [
+            "val"
+        ],
+        "device": "cuda",
+        "world_size": 1,
+        "dist_url": "env://",
+        "distributed": true,
+        "find_unused_parameters": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "sevila",
+        "load_finetuned": true,
+        "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+        "finetuned": "sevila_checkpoints/sevila_pretrained.pth",
+        "image_size": 224,
+        "drop_path_rate": 0,
+        "use_grad_checkpoint": false,
+        "vit_precision": "fp16",
+        "freeze_vit": true,
+        "num_query_token": 32,
+        "t5_model": "google/flan-t5-xl",
+        "prompt": "",
+        "model_type": "pretrain_flant5xl",
+        "frame_num": 4,
+        "answer_num": 5,
+        "task": "qvh_freeze_loc_train_qa_with_loc_train_qa_vid"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "blip_image_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "blip_image_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "blip_caption"
+            },
+            "eval": {
+                "name": "blip_caption"
+            }
+        }
+    },
+    "datasets": {
+        "nextqa": {
+            "data_type": "videos",
+            "build_info": {
+                "annotations": {
+                    "train": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json"
+                    },
+                    "val": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    },
+                    "test": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    }
+                },
+                "videos": {
+                    "storage": "/home/data/Videos/NExTVideo/"
+                }
+            },
+            "vis_processor": {
+                "train": {
+                    "name": "blip2_video_train",
+                    "n_frms": 32,
+                    "image_size": 224
+                },
+                "eval": {
+                    "name": "blip_video_eval",
+                    "n_frms": 32,
+                    "image_size": 224
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "blip_question",
+                    "max_words": 50
+                },
+                "eval": {
+                    "name": "blip_question",
+                    "max_words": 50
+                }
+            }
+        }
+    }
+}
+{
+    "run": {
+        "task": "videoqa",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 3e-05,
+        "min_lr": 0,
+        "warmup_lr": 1e-08,
+        "warmup_steps": 1000,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 4,
+        "batch_size_eval": 4,
+        "num_workers": 8,
+        "accum_grad_iters": 4,
+        "max_len": 30,
+        "min_len": 8,
+        "num_beams": 5,
+        "seed": 42,
+        "output_dir": "results/nextqa_ft",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "valid_splits": [
+            "val"
+        ],
+        "test_splits": [
+            "val"
+        ],
+        "device": "cuda",
+        "world_size": 1,
+        "dist_url": "env://",
+        "distributed": true,
+        "find_unused_parameters": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "sevila",
+        "load_finetuned": true,
+        "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+        "finetuned": "sevila_checkpoints/sevila_pretrained.pth",
+        "image_size": 224,
+        "drop_path_rate": 0,
+        "use_grad_checkpoint": false,
+        "vit_precision": "fp16",
+        "freeze_vit": true,
+        "num_query_token": 32,
+        "t5_model": "google/flan-t5-xl",
+        "prompt": "",
+        "model_type": "pretrain_flant5xl",
+        "frame_num": 4,
+        "answer_num": 5,
+        "task": "qvh_freeze_loc_train_qa_with_loc_train_qa_vid"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "blip_image_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "blip_image_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "blip_caption"
+            },
+            "eval": {
+                "name": "blip_caption"
+            }
+        }
+    },
+    "datasets": {
+        "nextqa": {
+            "data_type": "videos",
+            "build_info": {
+                "annotations": {
+                    "train": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json"
+                    },
+                    "val": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    },
+                    "test": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    }
+                },
+                "videos": {
+                    "storage": "/home/data/Videos/NExTVideo/"
+                }
+            },
+            "vis_processor": {
+                "train": {
+                    "name": "blip2_video_train",
+                    "n_frms": 32,
+                    "image_size": 224
+                },
+                "eval": {
+                    "name": "blip_video_eval",
+                    "n_frms": 32,
+                    "image_size": 224
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "blip_question",
+                    "max_words": 50
+                },
+                "eval": {
+                    "name": "blip_question",
+                    "max_words": 50
+                }
+            }
+        }
+    }
+}
+{
+    "run": {
+        "task": "videoqa",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 3e-05,
+        "min_lr": 0,
+        "warmup_lr": 1e-08,
+        "warmup_steps": 1000,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 4,
+        "batch_size_eval": 4,
+        "num_workers": 8,
+        "accum_grad_iters": 4,
+        "max_len": 30,
+        "min_len": 8,
+        "num_beams": 5,
+        "seed": 42,
+        "output_dir": "results/nextqa_ft",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "valid_splits": [
+            "val"
+        ],
+        "test_splits": [
+            "val"
+        ],
+        "device": "cuda",
+        "world_size": 1,
+        "dist_url": "env://",
+        "distributed": true,
+        "find_unused_parameters": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "sevila",
+        "load_finetuned": true,
+        "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+        "finetuned": "sevila_checkpoints/sevila_pretrained.pth",
+        "image_size": 224,
+        "drop_path_rate": 0,
+        "use_grad_checkpoint": false,
+        "vit_precision": "fp16",
+        "freeze_vit": true,
+        "num_query_token": 32,
+        "t5_model": "google/flan-t5-xl",
+        "prompt": "",
+        "model_type": "pretrain_flant5xl",
+        "frame_num": 4,
+        "answer_num": 5,
+        "task": "qvh_freeze_loc_train_qa_with_loc_train_qa_vid"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "blip_image_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "blip_image_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "blip_caption"
+            },
+            "eval": {
+                "name": "blip_caption"
+            }
+        }
+    },
+    "datasets": {
+        "nextqa": {
+            "data_type": "videos",
+            "build_info": {
+                "annotations": {
+                    "train": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json"
+                    },
+                    "val": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    },
+                    "test": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    }
+                },
+                "videos": {
+                    "storage": "/home/data/Videos/NExTVideo/"
+                }
+            },
+            "vis_processor": {
+                "train": {
+                    "name": "blip2_video_train",
+                    "n_frms": 32,
+                    "image_size": 224
+                },
+                "eval": {
+                    "name": "blip_video_eval",
+                    "n_frms": 32,
+                    "image_size": 224
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "blip_question",
+                    "max_words": 50
+                },
+                "eval": {
+                    "name": "blip_question",
+                    "max_words": 50
+                }
+            }
+        }
+    }
+}
+{
+    "run": {
+        "task": "videoqa",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 3e-05,
+        "min_lr": 0,
+        "warmup_lr": 1e-08,
+        "warmup_steps": 1000,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 4,
+        "batch_size_eval": 4,
+        "num_workers": 8,
+        "accum_grad_iters": 4,
+        "max_len": 30,
+        "min_len": 8,
+        "num_beams": 5,
+        "seed": 42,
+        "output_dir": "results/nextqa_ft",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "valid_splits": [
+            "val"
+        ],
+        "test_splits": [
+            "val"
+        ],
+        "device": "cuda",
+        "world_size": 2,
+        "dist_url": "env://",
+        "distributed": true,
+        "find_unused_parameters": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "sevila",
+        "load_finetuned": true,
+        "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+        "finetuned": "sevila_checkpoints/sevila_pretrained.pth",
+        "image_size": 224,
+        "drop_path_rate": 0,
+        "use_grad_checkpoint": false,
+        "vit_precision": "fp16",
+        "freeze_vit": true,
+        "num_query_token": 32,
+        "t5_model": "google/flan-t5-xl",
+        "prompt": "",
+        "model_type": "pretrain_flant5xl",
+        "frame_num": 4,
+        "answer_num": 5,
+        "task": "qvh_freeze_loc_train_qa_with_loc_train_qa_vid"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "blip_image_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "blip_image_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "blip_caption"
+            },
+            "eval": {
+                "name": "blip_caption"
+            }
+        }
+    },
+    "datasets": {
+        "nextqa": {
+            "data_type": "videos",
+            "build_info": {
+                "annotations": {
+                    "train": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json"
+                    },
+                    "val": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    },
+                    "test": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    }
+                },
+                "videos": {
+                    "storage": "/home/data/Videos/NExTVideo/"
+                }
+            },
+            "vis_processor": {
+                "train": {
+                    "name": "blip2_video_train",
+                    "n_frms": 32,
+                    "image_size": 224
+                },
+                "eval": {
+                    "name": "blip_video_eval",
+                    "n_frms": 32,
+                    "image_size": 224
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "blip_question",
+                    "max_words": 50
+                },
+                "eval": {
+                    "name": "blip_question",
+                    "max_words": 50
+                }
+            }
+        }
+    }
+}
+{"train_lr": "0.000", "train_loss": "0.320"}
+{"val_agg_metrics": 0.7143714971977582, "val_total": 4996, "val_CH": 67.7891654465593, "val_CW": 72.97297297297297, "val_TN": 64.91620111731844, "val_TC": 70.88989441930619, "val_DC": 55.932203389830505, "val_DL": 91.52542372881356, "val_DO": 80.65573770491802, "val_TP": 66.66666666666666, "val_best_epoch": 0}
+{
+    "run": {
+        "task": "videoqa",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 3e-05,
+        "min_lr": 0,
+        "warmup_lr": 1e-08,
+        "warmup_steps": 1000,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 4,
+        "batch_size_eval": 4,
+        "num_workers": 8,
+        "accum_grad_iters": 4,
+        "max_len": 30,
+        "min_len": 8,
+        "num_beams": 5,
+        "seed": 42,
+        "output_dir": "results/nextqa_ft",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "valid_splits": [
+            "val"
+        ],
+        "test_splits": [
+            "val"
+        ],
+        "device": "cuda",
+        "world_size": 1,
+        "dist_url": "env://",
+        "distributed": true,
+        "find_unused_parameters": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "sevila",
+        "load_finetuned": true,
+        "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+        "finetuned": "sevila_checkpoints/sevila_pretrained.pth",
+        "image_size": 224,
+        "drop_path_rate": 0,
+        "use_grad_checkpoint": false,
+        "vit_precision": "fp16",
+        "freeze_vit": true,
+        "num_query_token": 32,
+        "t5_model": "google/flan-t5-xl",
+        "prompt": "",
+        "model_type": "pretrain_flant5xl",
+        "frame_num": 4,
+        "answer_num": 5,
+        "task": "qvh_freeze_loc_train_qa_with_loc_train_qa_vid"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "blip_image_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "blip_image_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "blip_caption"
+            },
+            "eval": {
+                "name": "blip_caption"
+            }
+        }
+    },
+    "datasets": {
+        "nextqa": {
+            "data_type": "videos",
+            "build_info": {
+                "annotations": {
+                    "train": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json"
+                    },
+                    "val": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    },
+                    "test": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    }
+                },
+                "videos": {
+                    "storage": "/home/data/Videos/NExTVideo/"
+                }
+            },
+            "vis_processor": {
+                "train": {
+                    "name": "blip2_video_train",
+                    "n_frms": 32,
+                    "image_size": 224
+                },
+                "eval": {
+                    "name": "blip_video_eval",
+                    "n_frms": 32,
+                    "image_size": 224
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "blip_question",
+                    "max_words": 50
+                },
+                "eval": {
+                    "name": "blip_question",
+                    "max_words": 50
+                }
+            }
+        }
+    }
+}
+{
+    "run": {
+        "task": "videoqa",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 3e-05,
+        "min_lr": 0,
+        "warmup_lr": 1e-08,
+        "warmup_steps": 1000,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 4,
+        "batch_size_eval": 4,
+        "num_workers": 8,
+        "accum_grad_iters": 4,
+        "max_len": 30,
+        "min_len": 8,
+        "num_beams": 5,
+        "seed": 42,
+        "output_dir": "results/nextqa_ft",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "valid_splits": [
+            "val"
+        ],
+        "test_splits": [
+            "val"
+        ],
+        "device": "cuda",
+        "world_size": 1,
+        "dist_url": "env://",
+        "distributed": true,
+        "find_unused_parameters": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "sevila",
+        "load_finetuned": true,
+        "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+        "finetuned": "sevila_checkpoints/sevila_pretrained.pth",
+        "image_size": 224,
+        "drop_path_rate": 0,
+        "use_grad_checkpoint": false,
+        "vit_precision": "fp16",
+        "freeze_vit": true,
+        "num_query_token": 32,
+        "t5_model": "google/flan-t5-xl",
+        "prompt": "",
+        "model_type": "pretrain_flant5xl",
+        "frame_num": 4,
+        "answer_num": 5,
+        "task": "qvh_freeze_loc_train_qa_with_loc_train_qa_vid"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "blip_image_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "blip_image_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "blip_caption"
+            },
+            "eval": {
+                "name": "blip_caption"
+            }
+        }
+    },
+    "datasets": {
+        "nextqa": {
+            "data_type": "videos",
+            "build_info": {
+                "annotations": {
+                    "train": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json"
+                    },
+                    "val": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    },
+                    "test": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    }
+                },
+                "videos": {
+                    "storage": "/home/data/Videos/NExTVideo/"
+                }
+            },
+            "vis_processor": {
+                "train": {
+                    "name": "blip2_video_train",
+                    "n_frms": 32,
+                    "image_size": 224
+                },
+                "eval": {
+                    "name": "blip_video_eval",
+                    "n_frms": 32,
+                    "image_size": 224
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "blip_question",
+                    "max_words": 50
+                },
+                "eval": {
+                    "name": "blip_question",
+                    "max_words": 50
+                }
+            }
+        }
+    }
+}
+{
+    "run": {
+        "task": "videoqa",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 3e-05,
+        "min_lr": 0,
+        "warmup_lr": 1e-08,
+        "warmup_steps": 1000,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 4,
+        "batch_size_eval": 4,
+        "num_workers": 8,
+        "accum_grad_iters": 4,
+        "max_len": 30,
+        "min_len": 8,
+        "num_beams": 5,
+        "seed": 42,
+        "output_dir": "results/nextqa_ft",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "valid_splits": [
+            "val"
+        ],
+        "test_splits": [
+            "val"
+        ],
+        "device": "cuda",
+        "world_size": 1,
+        "dist_url": "env://",
+        "distributed": true,
+        "find_unused_parameters": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "sevila",
+        "load_finetuned": true,
+        "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+        "finetuned": "sevila_checkpoints/sevila_pretrained.pth",
+        "image_size": 224,
+        "drop_path_rate": 0,
+        "use_grad_checkpoint": false,
+        "vit_precision": "fp16",
+        "freeze_vit": true,
+        "num_query_token": 32,
+        "t5_model": "google/flan-t5-xl",
+        "prompt": "",
+        "model_type": "pretrain_flant5xl",
+        "frame_num": 4,
+        "answer_num": 5,
+        "task": "qvh_freeze_loc_train_qa_with_loc_train_qa_vid"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "blip_image_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "blip_image_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "blip_caption"
+            },
+            "eval": {
+                "name": "blip_caption"
+            }
+        }
+    },
+    "datasets": {
+        "nextqa": {
+            "data_type": "videos",
+            "build_info": {
+                "annotations": {
+                    "train": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json"
+                    },
+                    "val": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    },
+                    "test": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    }
+                },
+                "videos": {
+                    "storage": "/home/data/Videos/NExTVideo/"
+                }
+            },
+            "vis_processor": {
+                "train": {
+                    "name": "blip2_video_train",
+                    "n_frms": 32,
+                    "image_size": 224
+                },
+                "eval": {
+                    "name": "blip_video_eval",
+                    "n_frms": 32,
+                    "image_size": 224
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "blip_question",
+                    "max_words": 50
+                },
+                "eval": {
+                    "name": "blip_question",
+                    "max_words": 50
+                }
+            }
+        }
+    }
+}
+{
+    "run": {
+        "task": "videoqa",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 3e-05,
+        "min_lr": 0,
+        "warmup_lr": 1e-08,
+        "warmup_steps": 1000,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 4,
+        "batch_size_eval": 4,
+        "num_workers": 8,
+        "accum_grad_iters": 4,
+        "max_len": 30,
+        "min_len": 8,
+        "num_beams": 5,
+        "seed": 42,
+        "output_dir": "results/nextqa_ft",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "valid_splits": [
+            "val"
+        ],
+        "test_splits": [
+            "val"
+        ],
+        "device": "cuda",
+        "world_size": 1,
+        "dist_url": "env://",
+        "distributed": true,
+        "find_unused_parameters": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "sevila",
+        "load_finetuned": true,
+        "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+        "finetuned": "sevila_checkpoints/sevila_pretrained.pth",
+        "image_size": 224,
+        "drop_path_rate": 0,
+        "use_grad_checkpoint": false,
+        "vit_precision": "fp16",
+        "freeze_vit": true,
+        "num_query_token": 32,
+        "t5_model": "google/flan-t5-xl",
+        "prompt": "",
+        "model_type": "pretrain_flant5xl",
+        "frame_num": 4,
+        "answer_num": 5,
+        "task": "qvh_freeze_loc_train_qa_with_loc_train_qa_vid"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "blip_image_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "blip_image_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "blip_caption"
+            },
+            "eval": {
+                "name": "blip_caption"
+            }
+        }
+    },
+    "datasets": {
+        "nextqa": {
+            "data_type": "videos",
+            "build_info": {
+                "annotations": {
+                    "train": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json"
+                    },
+                    "val": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    },
+                    "test": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    }
+                },
+                "videos": {
+                    "storage": "/home/data/Videos/NExTVideo/"
+                }
+            },
+            "vis_processor": {
+                "train": {
+                    "name": "blip2_video_train",
+                    "n_frms": 32,
+                    "image_size": 224
+                },
+                "eval": {
+                    "name": "blip_video_eval",
+                    "n_frms": 32,
+                    "image_size": 224
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "blip_question",
+                    "max_words": 50
+                },
+                "eval": {
+                    "name": "blip_question",
+                    "max_words": 50
+                }
+            }
+        }
+    }
+}
+{
+    "run": {
+        "task": "videoqa",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 3e-05,
+        "min_lr": 0,
+        "warmup_lr": 1e-08,
+        "warmup_steps": 1000,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 4,
+        "batch_size_eval": 4,
+        "num_workers": 8,
+        "accum_grad_iters": 4,
+        "max_len": 30,
+        "min_len": 8,
+        "num_beams": 5,
+        "seed": 42,
+        "output_dir": "results/nextqa_ft",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "valid_splits": [
+            "val"
+        ],
+        "test_splits": [
+            "val"
+        ],
+        "device": "cuda",
+        "world_size": 1,
+        "dist_url": "env://",
+        "distributed": true,
+        "find_unused_parameters": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "sevila",
+        "load_finetuned": true,
+        "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+        "finetuned": "sevila_checkpoints/sevila_pretrained.pth",
+        "image_size": 224,
+        "drop_path_rate": 0,
+        "use_grad_checkpoint": false,
+        "vit_precision": "fp16",
+        "freeze_vit": true,
+        "num_query_token": 32,
+        "t5_model": "google/flan-t5-xl",
+        "prompt": "",
+        "model_type": "pretrain_flant5xl",
+        "frame_num": 4,
+        "answer_num": 5,
+        "task": "qvh_freeze_loc_train_qa_with_loc_train_qa_vid"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "blip_image_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "blip_image_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "blip_caption"
+            },
+            "eval": {
+                "name": "blip_caption"
+            }
+        }
+    },
+    "datasets": {
+        "nextqa": {
+            "data_type": "videos",
+            "build_info": {
+                "annotations": {
+                    "train": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json"
+                    },
+                    "val": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    },
+                    "test": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    }
+                },
+                "videos": {
+                    "storage": "/home/data/Videos/NExTVideo/"
+                }
+            },
+            "vis_processor": {
+                "train": {
+                    "name": "blip2_video_train",
+                    "n_frms": 32,
+                    "image_size": 224
+                },
+                "eval": {
+                    "name": "blip_video_eval",
+                    "n_frms": 32,
+                    "image_size": 224
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "blip_question",
+                    "max_words": 50
+                },
+                "eval": {
+                    "name": "blip_question",
+                    "max_words": 50
+                }
+            }
+        }
+    }
+}
+{
+    "run": {
+        "task": "videoqa",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 3e-05,
+        "min_lr": 0,
+        "warmup_lr": 1e-08,
+        "warmup_steps": 1000,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 4,
+        "batch_size_eval": 4,
+        "num_workers": 8,
+        "accum_grad_iters": 4,
+        "max_len": 30,
+        "min_len": 8,
+        "num_beams": 5,
+        "seed": 42,
+        "output_dir": "results/nextqa_ft",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "valid_splits": [
+            "val"
+        ],
+        "test_splits": [
+            "val"
+        ],
+        "device": "cuda",
+        "world_size": 1,
+        "dist_url": "env://",
+        "distributed": true,
+        "find_unused_parameters": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "sevila",
+        "load_finetuned": true,
+        "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+        "finetuned": "sevila_checkpoints/sevila_pretrained.pth",
+        "image_size": 224,
+        "drop_path_rate": 0,
+        "use_grad_checkpoint": false,
+        "vit_precision": "fp16",
+        "freeze_vit": true,
+        "num_query_token": 32,
+        "t5_model": "google/flan-t5-xl",
+        "prompt": "",
+        "model_type": "pretrain_flant5xl",
+        "frame_num": 4,
+        "answer_num": 5,
+        "task": "qvh_freeze_loc_train_qa_with_loc_train_qa_vid"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "blip_image_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "blip_image_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "blip_caption"
+            },
+            "eval": {
+                "name": "blip_caption"
+            }
+        }
+    },
+    "datasets": {
+        "nextqa": {
+            "data_type": "videos",
+            "build_info": {
+                "annotations": {
+                    "train": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json"
+                    },
+                    "val": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    },
+                    "test": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    }
+                },
+                "videos": {
+                    "storage": "/home/data/Videos/NExTVideo/"
+                }
+            },
+            "vis_processor": {
+                "train": {
+                    "name": "blip2_video_train",
+                    "n_frms": 32,
+                    "image_size": 224
+                },
+                "eval": {
+                    "name": "blip_video_eval",
+                    "n_frms": 32,
+                    "image_size": 224
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "blip_question",
+                    "max_words": 50
+                },
+                "eval": {
+                    "name": "blip_question",
+                    "max_words": 50
+                }
+            }
+        }
+    }
+}
+{
+    "run": {
+        "task": "videoqa",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 3e-05,
+        "min_lr": 0,
+        "warmup_lr": 1e-08,
+        "warmup_steps": 1000,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 4,
+        "batch_size_eval": 4,
+        "num_workers": 8,
+        "accum_grad_iters": 4,
+        "max_len": 30,
+        "min_len": 8,
+        "num_beams": 5,
+        "seed": 42,
+        "output_dir": "results/nextqa_ft",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "valid_splits": [
+            "val"
+        ],
+        "test_splits": [
+            "val"
+        ],
+        "device": "cuda",
+        "world_size": 1,
+        "dist_url": "env://",
+        "distributed": true,
+        "find_unused_parameters": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "sevila",
+        "load_finetuned": true,
+        "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+        "finetuned": "sevila_checkpoints/sevila_pretrained.pth",
+        "image_size": 224,
+        "drop_path_rate": 0,
+        "use_grad_checkpoint": false,
+        "vit_precision": "fp16",
+        "freeze_vit": true,
+        "num_query_token": 32,
+        "t5_model": "google/flan-t5-xl",
+        "prompt": "",
+        "model_type": "pretrain_flant5xl",
+        "frame_num": 4,
+        "answer_num": 5,
+        "task": "qvh_freeze_loc_train_qa_with_loc_train_qa_vid"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "blip_image_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "blip_image_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "blip_caption"
+            },
+            "eval": {
+                "name": "blip_caption"
+            }
+        }
+    },
+    "datasets": {
+        "nextqa": {
+            "data_type": "videos",
+            "build_info": {
+                "annotations": {
+                    "train": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json"
+                    },
+                    "val": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    },
+                    "test": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    }
+                },
+                "videos": {
+                    "storage": "/home/data/Videos/NExTVideo/"
+                }
+            },
+            "vis_processor": {
+                "train": {
+                    "name": "blip2_video_train",
+                    "n_frms": 32,
+                    "image_size": 224
+                },
+                "eval": {
+                    "name": "blip_video_eval",
+                    "n_frms": 32,
+                    "image_size": 224
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "blip_question",
+                    "max_words": 50
+                },
+                "eval": {
+                    "name": "blip_question",
+                    "max_words": 50
+                }
+            }
+        }
+    }
+}
+{
+    "run": {
+        "task": "videoqa",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 3e-05,
+        "min_lr": 0,
+        "warmup_lr": 1e-08,
+        "warmup_steps": 1000,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 4,
+        "batch_size_eval": 4,
+        "num_workers": 8,
+        "accum_grad_iters": 4,
+        "max_len": 30,
+        "min_len": 8,
+        "num_beams": 5,
+        "seed": 42,
+        "output_dir": "results/nextqa_ft",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "valid_splits": [
+            "val"
+        ],
+        "test_splits": [
+            "val"
+        ],
+        "device": "cuda",
+        "world_size": 1,
+        "dist_url": "env://",
+        "distributed": true,
+        "find_unused_parameters": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "sevila",
+        "load_finetuned": true,
+        "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+        "finetuned": "sevila_checkpoints/sevila_pretrained.pth",
+        "image_size": 224,
+        "drop_path_rate": 0,
+        "use_grad_checkpoint": false,
+        "vit_precision": "fp16",
+        "freeze_vit": true,
+        "num_query_token": 32,
+        "t5_model": "google/flan-t5-xl",
+        "prompt": "",
+        "model_type": "pretrain_flant5xl",
+        "frame_num": 4,
+        "answer_num": 5,
+        "task": "qvh_freeze_loc_train_qa_with_loc_train_qa_vid"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "blip_image_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "blip_image_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "blip_caption"
+            },
+            "eval": {
+                "name": "blip_caption"
+            }
+        }
+    },
+    "datasets": {
+        "nextqa": {
+            "data_type": "videos",
+            "build_info": {
+                "annotations": {
+                    "train": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json"
+                    },
+                    "val": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    },
+                    "test": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    }
+                },
+                "videos": {
+                    "storage": "/home/data/Videos/NExTVideo/"
+                }
+            },
+            "vis_processor": {
+                "train": {
+                    "name": "blip2_video_train",
+                    "n_frms": 32,
+                    "image_size": 224
+                },
+                "eval": {
+                    "name": "blip_video_eval",
+                    "n_frms": 32,
+                    "image_size": 224
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "blip_question",
+                    "max_words": 50
+                },
+                "eval": {
+                    "name": "blip_question",
+                    "max_words": 50
+                }
+            }
+        }
+    }
+}
+{
+    "run": {
+        "task": "videoqa",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 3e-05,
+        "min_lr": 0,
+        "warmup_lr": 1e-08,
+        "warmup_steps": 1000,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 4,
+        "batch_size_eval": 4,
+        "num_workers": 8,
+        "accum_grad_iters": 4,
+        "max_len": 30,
+        "min_len": 8,
+        "num_beams": 5,
+        "seed": 42,
+        "output_dir": "results/nextqa_ft",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "valid_splits": [
+            "val"
+        ],
+        "test_splits": [
+            "val"
+        ],
+        "device": "cuda",
+        "world_size": 1,
+        "dist_url": "env://",
+        "distributed": true,
+        "find_unused_parameters": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "sevila",
+        "load_finetuned": true,
+        "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+        "finetuned": "sevila_checkpoints/sevila_pretrained.pth",
+        "image_size": 224,
+        "drop_path_rate": 0,
+        "use_grad_checkpoint": false,
+        "vit_precision": "fp16",
+        "freeze_vit": true,
+        "num_query_token": 32,
+        "t5_model": "google/flan-t5-xl",
+        "prompt": "",
+        "model_type": "pretrain_flant5xl",
+        "frame_num": 4,
+        "answer_num": 5,
+        "task": "qvh_freeze_loc_train_qa_with_loc_train_qa_vid"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "blip_image_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "blip_image_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "blip_caption"
+            },
+            "eval": {
+                "name": "blip_caption"
+            }
+        }
+    },
+    "datasets": {
+        "nextqa": {
+            "data_type": "videos",
+            "build_info": {
+                "annotations": {
+                    "train": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json"
+                    },
+                    "val": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    },
+                    "test": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    }
+                },
+                "videos": {
+                    "storage": "/home/data/Videos/NExTVideo/"
+                }
+            },
+            "vis_processor": {
+                "train": {
+                    "name": "blip2_video_train",
+                    "n_frms": 32,
+                    "image_size": 224
+                },
+                "eval": {
+                    "name": "blip_video_eval",
+                    "n_frms": 32,
+                    "image_size": 224
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "blip_question",
+                    "max_words": 50
+                },
+                "eval": {
+                    "name": "blip_question",
+                    "max_words": 50
+                }
+            }
+        }
+    }
+}
+{
+    "run": {
+        "task": "videoqa",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 3e-05,
+        "min_lr": 0,
+        "warmup_lr": 1e-08,
+        "warmup_steps": 1000,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 4,
+        "batch_size_eval": 4,
+        "num_workers": 8,
+        "accum_grad_iters": 4,
+        "max_len": 30,
+        "min_len": 8,
+        "num_beams": 5,
+        "seed": 42,
+        "output_dir": "results/nextqa_ft",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "valid_splits": [
+            "val"
+        ],
+        "test_splits": [
+            "val"
+        ],
+        "device": "cuda",
+        "world_size": 1,
+        "dist_url": "env://",
+        "distributed": true,
+        "find_unused_parameters": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "sevila",
+        "load_finetuned": true,
+        "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+        "finetuned": "sevila_checkpoints/sevila_pretrained.pth",
+        "image_size": 224,
+        "drop_path_rate": 0,
+        "use_grad_checkpoint": false,
+        "vit_precision": "fp16",
+        "freeze_vit": true,
+        "num_query_token": 32,
+        "t5_model": "google/flan-t5-xl",
+        "prompt": "",
+        "model_type": "pretrain_flant5xl",
+        "frame_num": 4,
+        "answer_num": 5,
+        "task": "qvh_freeze_loc_train_qa_with_loc_train_qa_vid"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "blip_image_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "blip_image_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "blip_caption"
+            },
+            "eval": {
+                "name": "blip_caption"
+            }
+        }
+    },
+    "datasets": {
+        "nextqa": {
+            "data_type": "videos",
+            "build_info": {
+                "annotations": {
+                    "train": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json"
+                    },
+                    "val": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    },
+                    "test": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    }
+                },
+                "videos": {
+                    "storage": "/home/data/Videos/NExTVideo/"
+                }
+            },
+            "vis_processor": {
+                "train": {
+                    "name": "blip2_video_train",
+                    "n_frms": 32,
+                    "image_size": 224
+                },
+                "eval": {
+                    "name": "blip_video_eval",
+                    "n_frms": 32,
+                    "image_size": 224
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "blip_question",
+                    "max_words": 50
+                },
+                "eval": {
+                    "name": "blip_question",
+                    "max_words": 50
+                }
+            }
+        }
+    }
+}
+{
+    "run": {
+        "task": "videoqa",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 3e-05,
+        "min_lr": 0,
+        "warmup_lr": 1e-08,
+        "warmup_steps": 1000,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 4,
+        "batch_size_eval": 4,
+        "num_workers": 8,
+        "accum_grad_iters": 4,
+        "max_len": 30,
+        "min_len": 8,
+        "num_beams": 5,
+        "seed": 42,
+        "output_dir": "results/nextqa_ft",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "valid_splits": [
+            "val"
+        ],
+        "test_splits": [
+            "val"
+        ],
+        "device": "cuda",
+        "world_size": 1,
+        "dist_url": "env://",
+        "distributed": true,
+        "find_unused_parameters": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "sevila",
+        "load_finetuned": true,
+        "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+        "finetuned": "sevila_checkpoints/sevila_pretrained.pth",
+        "image_size": 224,
+        "drop_path_rate": 0,
+        "use_grad_checkpoint": false,
+        "vit_precision": "fp16",
+        "freeze_vit": true,
+        "num_query_token": 32,
+        "t5_model": "google/flan-t5-xl",
+        "prompt": "",
+        "model_type": "pretrain_flant5xl",
+        "frame_num": 4,
+        "answer_num": 5,
+        "task": "qvh_freeze_loc_train_qa_with_loc_train_qa_vid"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "blip_image_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "blip_image_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "blip_caption"
+            },
+            "eval": {
+                "name": "blip_caption"
+            }
+        }
+    },
+    "datasets": {
+        "nextqa": {
+            "data_type": "videos",
+            "build_info": {
+                "annotations": {
+                    "train": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json"
+                    },
+                    "val": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    },
+                    "test": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    }
+                },
+                "videos": {
+                    "storage": "/home/data/Videos/NExTVideo/"
+                }
+            },
+            "vis_processor": {
+                "train": {
+                    "name": "blip2_video_train",
+                    "n_frms": 32,
+                    "image_size": 224
+                },
+                "eval": {
+                    "name": "blip_video_eval",
+                    "n_frms": 32,
+                    "image_size": 224
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "blip_question",
+                    "max_words": 50
+                },
+                "eval": {
+                    "name": "blip_question",
+                    "max_words": 50
+                }
+            }
+        }
+    }
+}

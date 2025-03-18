@@ -1,0 +1,30 @@
+ # Copyright (c) 2022, salesforce.com, inc.
+ # All rights reserved.
+ # SPDX-License-Identifier: BSD-3-Clause
+ # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+
+datasets:
+ nextqa: # name of the dataset builder
+   # data_dir: ${env.data_dir}/datasets
+   data_type: videos # [images|videos|features]
+   build_info:
+     # Be careful not to append minus sign (-) before split to avoid itemizing
+     annotations:
+       train:
+         url: "/home/disk2/dachuang1-23/kafka_result/400/qa_annos/output.json"
+         storage: "/home/disk2/dachuang1-23/kafka_result/400/qa_annos/output.json"
+#                  新服务器修改
+#         url: /home/disk2/VQA/NExT-QA/qa_annos/train.json
+#         storage: /home/disk2/VQA/NExT-QA/qa_annos/train.json
+       val:
+         url: "/home/disk2/dachuang1-23/kafka_result/400/qa_annos/output.json"
+         storage: "/home/disk2/dachuang1-23/kafka_result/400/qa_annos/output.json"
+       test:
+         url: "/home/disk2/dachuang1-23/kafka_result/400/qa_annos/output.json"
+         storage: "/home/disk2/dachuang1-23/kafka_result/400/qa_annos/output.json"
+#         新服务器修改
+#         url:  /home/disk2/VQA/NExT-QA/qa_annos/val.json
+#         storage: /home/disk2/VQA/NExT-QA/qa_annos/val.json
+     videos:
+       #storage: /home/disk2/Vqa
+       storage: /home/disk2/dachuang1-23/kafka_result/

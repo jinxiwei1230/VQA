@@ -1,0 +1,79 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: NExT-QA fine-tune",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/xuyuanxing-22/anaconda3/envs/lavis_py310/lib/python3.10/site-packages/torch/distributed/run.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--nproc_per_node=1",
+                "train.py",
+                "--cfg-path",
+                "lavis/projects/sevila/train/nextqa.yaml",
+                "--options",
+                "run.output_dir=results/nextqa_ft",
+                "model.frame_num=4",
+                "datasets.nextqa.vis_processor.train.n_frms=32",
+                "datasets.nextqa.vis_processor.eval.n_frms=32",
+                "run.batch_size_train=2",
+                "run.batch_size_eval=2",
+                "run.init_lr=3e-5",
+                "run.max_epoch=10",
+                "run.warmup_steps=1000",
+                "run.accum_grad_iters=1",
+                "model.task=qvh_freeze_loc_train_qa_with_loc_train_qa_vid",
+                "model.finetuned=sevila_checkpoints/sevila_pretrained.pth",
+                "run.task=videoqa",
+                // "run.resume_ckpt_path=/root/VideoQA/sevila/lavis/results/nextqa_ft/checkpoint_0.pth"
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0",
+            }
+        },
+        {
+            "name": "Python: NExT-QA self-refine",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/xuyuanxing-22/anaconda3/envs/lavis_py310/lib/python3.10/site-packages/torch/distributed/run.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--nproc_per_node=1",
+                "train.py",
+                "--cfg-path",
+                "lavis/projects/sevila/train/nextqa.yaml",
+                "--options",
+                "run.output_dir=results/nextqa_sr",
+                "model.frame_num=4",
+                "datasets.nextqa.vis_processor.train.n_frms=4",
+                "datasets.nextqa.vis_processor.eval.n_frms=32",
+                "run.batch_size_train=16",
+                "run.batch_size_eval=12",
+                "run.init_lr=3e-5",
+                "run.max_epoch=10",
+                "run.warmup_steps=500",
+                "run.accum_grad_iters=1",
+                "model.task=qvh_train_loc_freeze_qa_vid",
+                "model.finetuned=sevila_checkpoints/sevila_pretrained.pth",
+                "run.task=videoqa",
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0",
+            }
+        },
+    ]
+}

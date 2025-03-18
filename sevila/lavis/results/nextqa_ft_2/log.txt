@@ -1,0 +1,131 @@
+{
+    "run": {
+        "task": "videoqa",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 3e-05,
+        "min_lr": 0,
+        "warmup_lr": 1e-08,
+        "warmup_steps": 1000,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 4,
+        "batch_size_eval": 4,
+        "num_workers": 8,
+        "accum_grad_iters": 4,
+        "max_len": 30,
+        "min_len": 8,
+        "num_beams": 5,
+        "seed": 42,
+        "output_dir": "results/nextqa_ft",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "valid_splits": [
+            "val"
+        ],
+        "test_splits": [
+            "val"
+        ],
+        "device": "cuda",
+        "world_size": 1,
+        "dist_url": "env://",
+        "distributed": true,
+        "find_unused_parameters": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "sevila",
+        "load_finetuned": true,
+        "pretrained": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_flant5xl.pth",
+        "finetuned": "sevila_checkpoints/sevila_pretrained.pth",
+        "image_size": 224,
+        "drop_path_rate": 0,
+        "use_grad_checkpoint": false,
+        "vit_precision": "fp16",
+        "freeze_vit": true,
+        "num_query_token": 32,
+        "t5_model": "google/flan-t5-xl",
+        "prompt": "",
+        "model_type": "pretrain_flant5xl",
+        "frame_num": 4,
+        "answer_num": 5,
+        "task": "qvh_freeze_loc_train_qa_with_loc_train_qa_vid"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "blip_image_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "blip_image_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "blip_caption"
+            },
+            "eval": {
+                "name": "blip_caption"
+            }
+        }
+    },
+    "datasets": {
+        "nextqa": {
+            "data_type": "videos",
+            "build_info": {
+                "annotations": {
+                    "train": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/train.json"
+                    },
+                    "val": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    },
+                    "test": {
+                        "url": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json",
+                        "storage": "/home/data/NExT-QA_re/qa_annos/nextqa/val.json"
+                    }
+                },
+                "videos": {
+                    "storage": "/home/data/Videos/NExTVideo/"
+                }
+            },
+            "vis_processor": {
+                "train": {
+                    "name": "blip2_video_train",
+                    "n_frms": 32,
+                    "image_size": 224
+                },
+                "eval": {
+                    "name": "blip_video_eval",
+                    "n_frms": 32,
+                    "image_size": 224
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "blip_question",
+                    "max_words": 50
+                },
+                "eval": {
+                    "name": "blip_question",
+                    "max_words": 50
+                }
+            }
+        }
+    }
+}
+{"train_lr": "0.000", "train_loss": "0.317"}
+{"val_agg_metrics": 0.7049639711769415, "val_total": 4996, "val_CH": 67.34992679355784, "val_CW": 71.25779625779626, "val_TN": 62.12290502793296, "val_TC": 71.34238310708899, "val_DL": 91.52542372881356, "val_DC": 63.2768361581921, "val_DO": 79.34426229508198, "val_TP": 70.37037037037037, "val_best_epoch": 0}
+{"train_lr": "0.000", "train_loss": "0.286"}
+{"val_agg_metrics": 0.7189751801441153, "val_total": 4996, "val_CH": 69.8389458272328, "val_CW": 72.0893970893971, "val_TN": 64.46927374301677, "val_TC": 73.00150829562594, "val_DL": 91.86440677966101, "val_DC": 62.14689265536724, "val_DO": 81.9672131147541, "val_TP": 66.66666666666666, "val_best_epoch": 1}
+{"train_lr": "0.000", "train_loss": "0.274"}
+{"val_agg_metrics": 0.7181745396317054, "val_total": 4996, "val_CH": 68.66764275256223, "val_CW": 72.66112266112266, "val_TN": 63.79888268156425, "val_TC": 72.09653092006033, "val_DL": 92.88135593220339, "val_DC": 62.14689265536724, "val_DO": 82.29508196721311, "val_TP": 68.51851851851852, "val_best_epoch": 1}

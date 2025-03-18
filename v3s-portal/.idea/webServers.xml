@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="8321c25f-7131-44fe-99ce-f95915f6b864" name="kafka-video">
+        <fileTransfer rootFolder="/home/disk2/dachuang1-23/HMMC" accessType="SFTP" host="10.92.68.110" port="22" sshConfigId="dd5ce8f6-a59b-45f7-af42-74b08f44f499" sshConfig="dachuang@10.92.68.110:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
